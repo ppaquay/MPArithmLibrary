@@ -1,0 +1,226 @@
+/***********************************************************************
+ *                                                                     *
+ *                Programme de test pour les fonctions RSA             *
+ *                                                                     *
+ *                                                                     *
+ *                            Pierre Paquay                            *
+ *                                                                     *
+ ***********************************************************************/
+
+#include "librsa++.hpp"
+#include "ripemd.h"
+
+#define KEYLENGTH0 256
+#define BLOCKLENGTH0 (KEYLENGTH0 >> 3) - 11
+#define KEYLENGTH1 512
+#define BLOCKLENGTH1 (KEYLENGTH1 >> 3) - 11
+#define KEYLENGTH2 1024
+#define BLOCKLENGTH2 (KEYLENGTH2 >> 3) - 11
+#define KEYLENGTH3 2048
+#define BLOCKLENGTH3 (KEYLENGTH3 >> 3) - 11
+#define KEYLENGTH4 4096
+#define BLOCKLENGTH4 (KEYLENGTH4 >> 3) - 11
+#define MESSLENGTH 2000
+#define NBRETESTS 40
+
+
+static UCHAR* genmess(const int);
+static void cout_mess(const char*, const int, const char* const);
+
+static UCHAR* genmess(const int len)
+{
+  UCHAR* mess = new UCHAR[len + 1];
+  UCHAR* temp = mess;
+  int i;
+
+  if (mess == NULL)
+    return NULL;
+  for (i = 0; i < len; i++)
+    {
+      *temp = ucrand64_l();
+      temp = temp + 1;
+    }
+  *temp = '\0';
+
+  return mess;
+}
+
+static void cout_mess (const char* mess, const int len, const char* const title)
+{
+  cout << title << " = 0x";
+
+  for  (int i = 0; i < len; i++)
+    {
+      cout << hex << (((unsigned)*mess++) & 0xff);
+    }
+
+  cout << endl;
+}
+
+int main()
+{
+  int error = 0;
+  int i;
+  int KEYLENGTH = 0, BLOCKLENGTH = 0;
+
+  seed64(time(NULL));
+
+  cout << "PROGRAMME DE TEST DES FONCTIONS RSA..." << endl;
+  cout << "--------------------------------------" << endl << endl;;
+
+  for (i = 0; i < NBRETESTS; i++)
+    {
+      
+#ifdef ARCH32
+      if (i < NBRETESTS / 4)
+	{
+	  KEYLENGTH = KEYLENGTH0;
+	  BLOCKLENGTH = BLOCKLENGTH0;
+	  cout << "TESTS POUR UNE CLE DE " << KEYLENGTH << " bits..." << endl;
+	}
+      else if ((i >= NBRETESTS / 4) && (i < NBRETESTS / 2))
+	{
+	  KEYLENGTH = KEYLENGTH1;
+	  BLOCKLENGTH = BLOCKLENGTH1;
+	  cout << "TESTS POUR UNE CLE DE " << KEYLENGTH << " bits..." << endl;
+	}
+      else if ((i >= NBRETESTS / 2) && (i < 3 * NBRETESTS / 4))
+	{
+	  KEYLENGTH = KEYLENGTH2;
+	  BLOCKLENGTH = BLOCKLENGTH2;
+	  cout << "TESTS POUR UNE CLE DE " << KEYLENGTH << " bits..." << endl;
+	}
+      else if ((i >= 3 * NBRETESTS / 4) && (i < NBRETESTS))
+	{
+	  KEYLENGTH = KEYLENGTH3;
+	  BLOCKLENGTH = BLOCKLENGTH3;
+	  cout << "TESTS POUR UNE CLE DE " << KEYLENGTH << " bits..." << endl;
+	}
+#endif
+#ifdef ARCH64
+     if (i < NBRETESTS / 4)
+	{
+	  KEYLENGTH = KEYLENGTH1;
+	  BLOCKLENGTH = BLOCKLENGTH1;
+	  cout << "TESTS POUR UNE CLE DE " << KEYLENGTH << " bits..." << endl;
+	}
+      else if ((i >= NBRETESTS / 4) && (i < NBRETESTS / 2))
+	{
+	  KEYLENGTH = KEYLENGTH2;
+	  BLOCKLENGTH = BLOCKLENGTH2;
+	  cout << "TESTS POUR UNE CLE DE " << KEYLENGTH << " bits..." << endl;
+	}
+      else if ((i >= NBRETESTS / 2) && (i < 3 * NBRETESTS / 4))
+	{
+	  KEYLENGTH = KEYLENGTH3;
+	  BLOCKLENGTH = BLOCKLENGTH3;
+	  cout << "TESTS POUR UNE CLE DE " << KEYLENGTH << " bits..." << endl;
+	}
+      else if ((i >= 3 * NBRETESTS / 4) && (i < NBRETESTS))
+	{
+	  KEYLENGTH = KEYLENGTH4;
+	  BLOCKLENGTH = BLOCKLENGTH4;
+	  cout << "TESTS POUR UNE CLE DE " << KEYLENGTH << " bits..." << endl;
+	}
+#endif
+      cout << endl;
+
+      // Test de cryptage et de signature...
+      
+      cout << "Génération d'une clé RSA privée de " << KEYLENGTH << " bits..." << endl;
+      RSAPriv ma_cle(KEYLENGTH);
+      cout << "Clé privée générée." << endl;
+      
+      cout << "Extraction de la clé publique de cette clé privée..." << endl;
+      RSAPub ma_cle_pub(ma_cle);
+      cout << "Clé publique extraite." << endl;
+      
+      cout << "Génération d'un message aléatoire de " << BLOCKLENGTH << " bytes..." << endl;
+      UCHAR* mess1 = genmess(BLOCKLENGTH);
+      cout << "Message aléatoire généré." << endl;
+      cout_mess((const char*)mess1, BLOCKLENGTH, "Message_1");
+      cout << dec << endl;
+      
+      largeint c = ma_cle_pub.crypt(mess1, BLOCKLENGTH);
+      cout << "Message crypté." << endl;
+      cout << "Texte crypté = " << c << endl;
+      
+      cout << "Génération d'un message aléatoire de " << MESSLENGTH << " bytes..." << endl;
+      UCHAR* mess2 = genmess(MESSLENGTH);
+      cout << "Message aléatoire généré." << endl;
+      cout_mess((const char*)mess2, MESSLENGTH, "Message_2");
+      cout << dec << endl;
+      
+      largeint sign = ma_cle.sign(mess2, MESSLENGTH);
+      cout << "Message Hashé et signé." << endl;
+      cout_mess((const char*)ripemd160((UCHAR*)mess2, MESSLENGTH), 20, "Hash_value");
+      cout << dec << endl;
+      cout << "Signature = " << sign << endl;
+      
+      int len;
+      UCHAR* m = ma_cle.decrypt(c, &len);
+      if ((len == BLOCKLENGTH) && (!memcmp(m, mess1, BLOCKLENGTH)))
+	cout << "Opération de cryptage/décryptage réussie ! ----> OK" << endl;
+      else
+	{
+	  cout << "Erreur dans l'opération de cryptage/décryptage !!!" << endl;
+	  error = 1;
+	}
+      
+      if (ma_cle_pub.authen(mess2, sign, MESSLENGTH) == 1)
+	cout << "Opération de signature/identification réussie ! ----> OK" << endl;
+      else
+	{
+	  cout << "Erreur dans l'opération de signature/identification !!!" << endl;
+	  error = 1;
+	}
+      cout << endl;
+      
+      // Test de lecture et d'écriture dans un fichier...
+      
+      RSAPriv cle_test1;
+      RSAPub cle_test2;
+      
+      cout << "Ecriture des clés dans les fichiers rsa.prv et rsa.pub..." << endl;
+      ofstream fout1("rsa.prv", ios::out | ios::binary);
+      fout1 << ma_cle;
+      fout1.close();
+      ofstream fout2("rsa.pub", ios::out | ios::binary);
+      fout2 << ma_cle_pub;
+      fout2.close();
+  
+      cout << "Lecture des clés dans les fichiers rsa.prv et rsa.pub..." << endl;
+      ifstream fin1("rsa.prv", ios::in | ios::binary);
+      fin1 >> cle_test1;
+      fin1.close();
+      ifstream fin2("rsa.pub", ios::in | ios::binary);
+      fin2 >> cle_test2;
+      fin2.close();
+      
+      if (cle_test1 == ma_cle)
+	cout << "Opération de lecture/écriture de la clé privée réussie ! ----> OK" << endl;
+      else
+	{
+	  cout << "Erreur de lecture/écriture de la clé privée !!!" << endl;
+	  error = 1;
+	}
+      cout << endl;
+      if (cle_test2 == ma_cle_pub)
+	cout << "Opération de lecture/écriture de la clé publique réussie ! ----> OK" << endl;
+      else
+	{
+	  cout << "Erreur de lecture/écriture de la clé publique !!!" << endl;
+	  error = 1;
+	}
+      cout << endl;
+    }
+  cout << endl;
+
+  if (error)
+    cout << "Erreur dans une des opérations du test !!!!!!!!!!!!" << endl;
+  else
+    cout << "Tous les tests se sont déroulés sans erreur." << endl;
+
+  return 0;
+}
+

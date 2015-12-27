@@ -1,0 +1,56 @@
+#include "crypto-api.hpp"
+
+int main()
+{
+  KeyPriv clepriv("Pierre_Paquay", "p.paquay@linuxaddict.be", 1024);
+  cout << "Clé privée générée" << endl;
+
+  KeyPub clepub(clepriv);
+  cout << "Clé publique générée" << endl;
+
+  ofstream foutpub("Essai.pub", ios::out | ios::binary);
+  foutpub << clepub;
+  foutpub.close();
+  cout << "Ecriture de la clé publique dans Essai.pub" << endl;
+
+  ofstream foutpriv("Essai.priv", ios::out | ios::binary);
+  foutpriv << clepriv;
+  foutpriv.close();
+  cout << "Ecriture de la clé privée dans Essai.priv" << endl;
+
+  KeyPub cletest_pub;
+  ifstream finpub("Essai.pub", ios::in | ios::binary);
+  finpub >> cletest_pub;
+  finpub.close();
+  cout << "Lecture de la clé publique dans Essai.pub" << endl;
+
+  KeyPriv cletest_priv;
+  ifstream finpriv("Essai.priv", ios::in | ios::binary);
+  finpriv >> cletest_priv;
+  finpriv.close();
+  cout << "Lecture de la clé privée dans Essai.priv" << endl;
+
+  if (clepub == cletest_pub)
+    cout << "Lecture/ecriture clé publique --> OK" << endl;
+  else
+    cout << "MERDE!!!!!!!!" << endl;
+
+  if (clepriv == cletest_priv)
+    cout << "Lecture/ecriture clé privée --> OK" << endl;
+  else
+    cout << "MERDE!!!!!!!!" << endl;
+
+  /*seed64(time(NULL));
+
+  for (i = 0; i < 8; i++)
+    do
+      salted[i] = ucrand64_l();
+    while (salted[i] == 0);
+  cout << "Key = " << base64_encode(string2key((UCHAR*)pass, strlen((char*)pass), 32, salted), 32, 0) << endl;
+  printf("Salt = ");
+  for (i = 0; i < 8; i++)
+    printf("%x ", salted[i]);*/
+
+
+  return 0;
+}

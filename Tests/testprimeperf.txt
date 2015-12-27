@@ -1,0 +1,667 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 80.83    106.61   106.61  1488620     0.00     0.00  div_l
+ 15.81    127.46    20.85   989844     0.00     0.00  sqr
+  1.01    128.79     1.33  6467561     0.00     0.00  copy_l
+  0.77    129.81     1.02 283423068     0.00     0.00  lsdptr_l
+  0.70    130.73     0.92   498866     0.00     0.00  mul
+  0.24    131.04     0.31  5968212     0.00     0.00  purgevars_l
+  0.17    131.27     0.23 67177209     0.00     0.00  digits_l
+  0.16    131.48     0.21 31568346     0.00     0.00  msdptr_l
+  0.10    131.61     0.13 16548402     0.00     0.00  rmldzeros_l
+  0.08    131.71     0.10      991     0.00     0.00  sieve_l
+  0.04    131.76     0.05  6457023     0.00     0.00  eqz_l
+  0.02    131.79     0.03  1491044     0.00     0.00  comp_l
+  0.02    131.82     0.03  1488620     0.00     0.00  mod_l
+  0.02    131.85     0.03     1015     0.00     0.13  wexpmod_l
+  0.02    131.87     0.02   989844     0.00     0.00  sqrmod_l
+  0.02    131.89     0.02   498163     0.00     0.00  mulmod_l
+  0.01    131.90     0.01  4125521     0.00     0.00  setdigits_l
+  0.00    131.90     0.00  1530247     0.00     0.00  decdigits_l
+  0.00    131.90     0.00   175642     0.00     0.00  setzero_l
+  0.00    131.90     0.00     5784     0.00     0.00  u2bigint_l
+  0.00    131.90     0.00     4996     0.00     0.00  eq1_l
+  0.00    131.90     0.00     4389     0.00     0.00  iseven_l
+  0.00    131.90     0.00     2310     0.00     0.00  equ_l
+  0.00    131.90     0.00     1776     0.00     0.00  shright_l
+  0.00    131.90     0.00     1692     0.00     0.00  add
+  0.00    131.90     0.00     1692     0.00     0.00  add_l
+  0.00    131.90     0.00     1692     0.00     0.00  uadd_l
+  0.00    131.90     0.00     1115     0.00     0.00  sub
+  0.00    131.90     0.00     1109     0.00     0.00  sub_l
+  0.00    131.90     0.00     1109     0.00     0.00  usub_l
+  0.00    131.90     0.00      958     0.00     0.00  gtzero_l
+  0.00    131.90     0.00      703     0.00     0.00  mul_l
+  0.00    131.90     0.00      703     0.00     0.00  rand64_l
+  0.00    131.90     0.00      694     0.00     0.00  usrand64_l
+  0.00    131.90     0.00      651     0.00     0.13  MRprime_l
+  0.00    131.90     0.00      474     0.00     0.00  setone_l
+  0.00    131.90     0.00      352     0.00     0.00  jacobi_l
+  0.00    131.90     0.00      340     0.00     0.13  SSprime_l
+  0.00    131.90     0.00        9     0.00     0.00  rand_l
+  0.00    131.90     0.00        9     0.00     0.00  ulrand64_l
+  0.00    131.90     0.00        6     0.00     0.00  eqmod_l
+  0.00    131.90     0.00        6     0.00     0.09  expmodk_l
+  0.00    131.90     0.00        6     0.00     0.00  ge_l
+  0.00    131.90     0.00        6     0.00     0.00  numbits_l
+  0.00    131.90     0.00        6     0.00     0.00  submod_l
+  0.00    131.90     0.00        1     0.00   131.90  fermat_l
+  0.00    131.90     0.00        1     0.00     0.00  ulseed64_l
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+ 
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this 
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 4 byte(s) for 0.01% of 131.90 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]    100.0    0.00  131.90                 main [1]
+                0.00  131.90       1/1           fermat_l [2]
+                0.00    0.00       1/1           ulseed64_l [45]
+-----------------------------------------------
+                0.00  131.90       1/1           main [1]
+[2]    100.0    0.00  131.90       1         fermat_l [2]
+                0.00   85.79     651/651         MRprime_l [7]
+                0.00   45.56     340/340         SSprime_l [8]
+                0.00    0.54       6/6           expmodk_l [14]
+                0.00    0.00       9/9           rand_l [26]
+                0.00    0.00     989/1692        uadd_l [28]
+                0.00    0.00       6/6           eqmod_l [32]
+                0.00    0.00       9/9           ulrand64_l [41]
+                0.00    0.00       6/6457023     eqz_l [19]
+                0.00    0.00       6/4389        iseven_l [40]
+                0.00    0.00       9/4125521     setdigits_l [23]
+-----------------------------------------------
+                0.01   45.47     352/1015        SSprime_l [8]
+                0.02   85.63     663/1015        MRprime_l [7]
+[3]     99.4    0.03  131.10    1015         wexpmod_l [3]
+                0.02   93.07  984218/989844      sqrmod_l [6]
+                0.02   37.99  497196/498163      mulmod_l [9]
+                0.00    0.00   63042/31568346     msdptr_l [16]
+                0.00    0.00    2030/6467561     copy_l [12]
+                0.00    0.00   63042/67177209     digits_l [18]
+                0.00    0.00    2030/6457023     eqz_l [19]
+                0.00    0.00    2030/4996        eq1_l [37]
+                0.00    0.00    1015/5968212     purgevars_l [17]
+                0.00    0.00    1015/16548402     rmldzeros_l [15]
+                0.00    0.00    2030/5784        u2bigint_l [42]
+-----------------------------------------------
+                0.00    0.00       6/1488620     submod_l [33]
+                0.00    0.00       6/1488620     expmodk_l [14]
+                0.00    0.04     601/1488620     jacobi_l [22]
+                0.01   36.38  498163/1488620     mulmod_l [9]
+                0.02   72.29  989844/1488620     sqrmod_l [6]
+[4]     82.4    0.03  108.71 1488620         mod_l [4]
+              106.61    2.02 1488620/1488620     div_l [5]
+                0.08    0.00 1488620/5968212     purgevars_l [17]
+-----------------------------------------------
+              106.61    2.02 1488620/1488620     mod_l [4]
+[5]     82.4  106.61    2.02 1488620         div_l [5]
+                0.92    0.04 4465258/6467561     copy_l [12]
+                0.56    0.00 155198303/283423068     lsdptr_l [13]
+                0.04    0.08 5605348/16548402     rmldzeros_l [15]
+                0.03    0.09 1488619/1491044     comp_l [20]
+                0.02    0.07 2977240/6457023     eqz_l [19]
+                0.08    0.00 1488620/5968212     purgevars_l [17]
+                0.03    0.01 3941561/31568346     msdptr_l [16]
+                0.04    0.00 10508826/67177209     digits_l [18]
+                0.01    0.00 2627507/4125521     setdigits_l [23]
+                0.00    0.00     601/5784        u2bigint_l [42]
+                0.00    0.00  174567/175642      setzero_l [47]
+-----------------------------------------------
+                0.00    0.06     654/989844      MRprime_l [7]
+                0.00    0.47    4972/989844      expmodk_l [14]
+                0.02   93.07  984218/989844      wexpmod_l [3]
+[6]     71.0    0.02   93.60  989844         sqrmod_l [6]
+                0.02   72.29  989844/1488620     mod_l [4]
+               20.85    0.15  989844/989844      sqr [10]
+                0.20    0.01  989844/6467561     copy_l [12]
+                0.05    0.00  989844/5968212     purgevars_l [17]
+                0.01    0.02  989844/6457023     eqz_l [19]
+-----------------------------------------------
+                0.00   85.79     651/651         fermat_l [2]
+[7]     65.0    0.00   85.79     651         MRprime_l [7]
+                0.02   85.63     663/1015        wexpmod_l [3]
+                0.07    0.01     651/991         sieve_l [21]
+                0.00    0.06     654/989844      sqrmod_l [6]
+                0.00    0.00     651/1109        usub_l [30]
+                0.00    0.00    1302/6467561     copy_l [12]
+                0.00    0.00    1305/1776        shright_l [34]
+                0.00    0.00    1958/2310        equ_l [36]
+                0.00    0.00    2620/4996        eq1_l [37]
+                0.00    0.00     651/5968212     purgevars_l [17]
+                0.00    0.00    1956/4389        iseven_l [40]
+-----------------------------------------------
+                0.00   45.56     340/340         fermat_l [2]
+[8]     34.5    0.00   45.56     340         SSprime_l [8]
+                0.01   45.47     352/1015        wexpmod_l [3]
+                0.00    0.04     352/352         jacobi_l [22]
+                0.03    0.00     340/991         sieve_l [21]
+                0.00    0.00     458/1109        usub_l [30]
+                0.00    0.00     340/6467561     copy_l [12]
+                0.00    0.00     340/1776        shright_l [34]
+                0.00    0.00     352/2310        equ_l [36]
+                0.00    0.00     340/5968212     purgevars_l [17]
+                0.00    0.00     340/4996        eq1_l [37]
+                0.00    0.00     352/5784        u2bigint_l [42]
+                0.00    0.00     122/474         setone_l [48]
+                0.00    0.00     112/175642      setzero_l [47]
+-----------------------------------------------
+                0.00    0.07     967/498163      expmodk_l [14]
+                0.02   37.99  497196/498163      wexpmod_l [3]
+[9]     28.9    0.02   38.06  498163         mulmod_l [9]
+                0.01   36.38  498163/1488620     mod_l [4]
+                0.92    0.50  498163/498866      mul [11]
+                0.20    0.01  996326/6467561     copy_l [12]
+                0.03    0.00  498163/5968212     purgevars_l [17]
+                0.00    0.01  498163/6457023     eqz_l [19]
+-----------------------------------------------
+               20.85    0.15  989844/989844      sqrmod_l [6]
+[10]    15.9   20.85    0.15  989844         sqr [10]
+                0.05    0.00  989844/5968212     purgevars_l [17]
+                0.03    0.00 8908596/283423068     lsdptr_l [13]
+                0.01    0.02  989844/6457023     eqz_l [19]
+                0.01    0.01  989844/16548402     rmldzeros_l [15]
+                0.01    0.00  989844/31568346     msdptr_l [16]
+                0.00    0.00  989844/67177209     digits_l [18]
+                0.00    0.00  989844/4125521     setdigits_l [23]
+-----------------------------------------------
+                0.00    0.00     703/498866      mul_l [27]
+                0.92    0.50  498163/498866      mulmod_l [9]
+[11]     1.1    0.92    0.50  498866         mul [11]
+                0.42    0.00 116005376/283423068     lsdptr_l [13]
+                0.01    0.02  997732/6457023     eqz_l [19]
+                0.03    0.00  498866/5968212     purgevars_l [17]
+                0.00    0.01  498866/16548402     rmldzeros_l [15]
+                0.01    0.00  997732/31568346     msdptr_l [16]
+                0.00    0.00  997732/67177209     digits_l [18]
+                0.00    0.00  498866/4125521     setdigits_l [23]
+-----------------------------------------------
+                0.00    0.00       1/6467561     ulseed64_l [45]
+                0.00    0.00       6/6467561     numbits_l [43]
+                0.00    0.00      12/6467561     submod_l [33]
+                0.00    0.00      24/6467561     expmodk_l [14]
+                0.00    0.00     340/6467561     SSprime_l [8]
+                0.00    0.00    1302/6467561     MRprime_l [7]
+                0.00    0.00    1906/6467561     jacobi_l [22]
+                0.00    0.00    2030/6467561     wexpmod_l [3]
+                0.00    0.00    2109/6467561     mul_l [27]
+                0.00    0.00    3327/6467561     sub_l [31]
+                0.00    0.00    5076/6467561     add_l [29]
+                0.20    0.01  989844/6467561     sqrmod_l [6]
+                0.20    0.01  996326/6467561     mulmod_l [9]
+                0.92    0.04 4465258/6467561     div_l [5]
+[12]     1.1    1.33    0.07 6467561         copy_l [12]
+                0.04    0.02 6467561/31568346     msdptr_l [16]
+-----------------------------------------------
+                0.00    0.00       2/283423068     ulseed64_l [45]
+                0.00    0.00      11/283423068     eq1_l [37]
+                0.00    0.00    1072/283423068     jacobi_l [22]
+                0.00    0.00    1776/283423068     shright_l [34]
+                0.00    0.00    2620/283423068     comp_l [20]
+                0.00    0.00    3345/283423068     sub [38]
+                0.00    0.00    4389/283423068     iseven_l [40]
+                0.00    0.00    5076/283423068     add [35]
+                0.00    0.00    5784/283423068     u2bigint_l [42]
+                0.01    0.00 3286718/283423068     sieve_l [21]
+                0.03    0.00 8908596/283423068     sqr [10]
+                0.42    0.00 116005376/283423068     mul [11]
+                0.56    0.00 155198303/283423068     div_l [5]
+[13]     0.8    1.02    0.00 283423068         lsdptr_l [13]
+-----------------------------------------------
+                0.00    0.54       6/6           fermat_l [2]
+[14]     0.4    0.00    0.54       6         expmodk_l [14]
+                0.00    0.47    4972/989844      sqrmod_l [6]
+                0.00    0.07     967/498163      mulmod_l [9]
+                0.00    0.00       6/1488620     mod_l [4]
+                0.00    0.00      24/6467561     copy_l [12]
+                0.00    0.00       6/6           numbits_l [43]
+                0.00    0.00      18/6457023     eqz_l [19]
+                0.00    0.00       6/5968212     purgevars_l [17]
+                0.00    0.00      12/16548402     rmldzeros_l [15]
+                0.00    0.00       6/4996        eq1_l [37]
+                0.00    0.00       6/31568346     msdptr_l [16]
+-----------------------------------------------
+                0.00    0.00       1/16548402     ulseed64_l [45]
+                0.00    0.00       6/16548402     numbits_l [43]
+                0.00    0.00      12/16548402     expmodk_l [14]
+                0.00    0.00    1015/16548402     wexpmod_l [3]
+                0.00    0.00    1115/16548402     sub [38]
+                0.00    0.00    1692/16548402     add [35]
+                0.00    0.00    1776/16548402     shright_l [34]
+                0.00    0.00    4620/16548402     equ_l [36]
+                0.00    0.00    4996/16548402     eq1_l [37]
+                0.00    0.01  498866/16548402     mul [11]
+                0.01    0.01  989844/16548402     sqr [10]
+                0.02    0.04 2982088/16548402     comp_l [20]
+                0.04    0.08 5605348/16548402     div_l [5]
+                0.05    0.10 6457023/16548402     eqz_l [19]
+[15]     0.3    0.13    0.24 16548402         rmldzeros_l [15]
+                0.12    0.06 18076856/31568346     msdptr_l [16]
+                0.06    0.00 18078649/67177209     digits_l [18]
+                0.00    0.00 1530247/1530247     decdigits_l [46]
+-----------------------------------------------
+                0.00    0.00       6/31568346     expmodk_l [14]
+                0.00    0.00    1776/31568346     shright_l [34]
+                0.00    0.00    2230/31568346     sub [38]
+                0.00    0.00    3384/31568346     add [35]
+                0.00    0.00    4150/31568346     equ_l [36]
+                0.00    0.00   54722/31568346     sieve_l [21]
+                0.00    0.00   63042/31568346     wexpmod_l [3]
+                0.01    0.00  965482/31568346     comp_l [20]
+                0.01    0.00  989844/31568346     sqr [10]
+                0.01    0.00  997732/31568346     mul [11]
+                0.03    0.01 3941561/31568346     div_l [5]
+                0.04    0.02 6467561/31568346     copy_l [12]
+                0.12    0.06 18076856/31568346     rmldzeros_l [15]
+[16]     0.2    0.21    0.11 31568346         msdptr_l [16]
+                0.11    0.00 31568346/67177209     digits_l [18]
+-----------------------------------------------
+                0.00    0.00       6/5968212     submod_l [33]
+                0.00    0.00       6/5968212     expmodk_l [14]
+                0.00    0.00       6/5968212     numbits_l [43]
+                0.00    0.00     340/5968212     SSprime_l [8]
+                0.00    0.00     352/5968212     jacobi_l [22]
+                0.00    0.00     651/5968212     MRprime_l [7]
+                0.00    0.00     703/5968212     mul_l [27]
+                0.00    0.00     991/5968212     sieve_l [21]
+                0.00    0.00    1015/5968212     wexpmod_l [3]
+                0.00    0.00    1109/5968212     sub_l [31]
+                0.00    0.00    1109/5968212     usub_l [30]
+                0.00    0.00    1115/5968212     sub [38]
+                0.00    0.00    1692/5968212     add [35]
+                0.00    0.00    1692/5968212     add_l [29]
+                0.00    0.00    1692/5968212     uadd_l [28]
+                0.00    0.00    1776/5968212     shright_l [34]
+                0.03    0.00  498163/5968212     mulmod_l [9]
+                0.03    0.00  498866/5968212     mul [11]
+                0.05    0.00  989844/5968212     sqr [10]
+                0.05    0.00  989844/5968212     sqrmod_l [6]
+                0.08    0.00 1488620/5968212     div_l [5]
+                0.08    0.00 1488620/5968212     mod_l [4]
+[17]     0.2    0.31    0.00 5968212         purgevars_l [17]
+-----------------------------------------------
+                0.00    0.00       6/67177209     numbits_l [43]
+                0.00    0.00       9/67177209     ulrand64_l [41]
+                0.00    0.00     694/67177209     usrand64_l [25]
+                0.00    0.00     703/67177209     mul_l [27]
+                0.00    0.00     703/67177209     rand64_l [24]
+                0.00    0.00     846/67177209     sieve_l [21]
+                0.00    0.00    1115/67177209     sub [38]
+                0.00    0.00    1692/67177209     add_l [29]
+                0.00    0.00    4996/67177209     eq1_l [37]
+                0.00    0.00    5076/67177209     add [35]
+                0.00    0.00    6930/67177209     equ_l [36]
+                0.00    0.00    8778/67177209     iseven_l [40]
+                0.00    0.00   63042/67177209     wexpmod_l [3]
+                0.00    0.00  989844/67177209     sqr [10]
+                0.00    0.00  997732/67177209     mul [11]
+                0.02    0.00 4939222/67177209     comp_l [20]
+                0.04    0.00 10508826/67177209     div_l [5]
+                0.06    0.00 18078649/67177209     rmldzeros_l [15]
+                0.11    0.00 31568346/67177209     msdptr_l [16]
+[18]     0.2    0.23    0.00 67177209         digits_l [18]
+-----------------------------------------------
+                0.00    0.00       6/6457023     fermat_l [2]
+                0.00    0.00       6/6457023     submod_l [33]
+                0.00    0.00      12/6457023     eqmod_l [32]
+                0.00    0.00      18/6457023     expmodk_l [14]
+                0.00    0.00     352/6457023     jacobi_l [22]
+                0.00    0.00    1776/6457023     shright_l [34]
+                0.00    0.00    2030/6457023     wexpmod_l [3]
+                0.00    0.01  498163/6457023     mulmod_l [9]
+                0.01    0.02  989844/6457023     sqr [10]
+                0.01    0.02  989844/6457023     sqrmod_l [6]
+                0.01    0.02  997732/6457023     mul [11]
+                0.02    0.07 2977240/6457023     div_l [5]
+[19]     0.1    0.05    0.15 6457023         eqz_l [19]
+                0.05    0.10 6457023/16548402     rmldzeros_l [15]
+-----------------------------------------------
+                0.00    0.00       6/1491044     ge_l [44]
+                0.00    0.00     352/1491044     jacobi_l [22]
+                0.00    0.00     958/1491044     gtzero_l [39]
+                0.00    0.00    1109/1491044     sub_l [31]
+                0.03    0.09 1488619/1491044     div_l [5]
+[20]     0.1    0.03    0.09 1491044         comp_l [20]
+                0.02    0.04 2982088/16548402     rmldzeros_l [15]
+                0.02    0.00 4939222/67177209     digits_l [18]
+                0.01    0.00  965482/31568346     msdptr_l [16]
+                0.00    0.00    2620/283423068     lsdptr_l [13]
+-----------------------------------------------
+                0.03    0.00     340/991         SSprime_l [8]
+                0.07    0.01     651/991         MRprime_l [7]
+[21]     0.1    0.10    0.01     991         sieve_l [21]
+                0.01    0.00 3286718/283423068     lsdptr_l [13]
+                0.00    0.00   54722/31568346     msdptr_l [16]
+                0.00    0.00     991/5968212     purgevars_l [17]
+                0.00    0.00     991/4389        iseven_l [40]
+                0.00    0.00     846/67177209     digits_l [18]
+-----------------------------------------------
+                0.00    0.04     352/352         SSprime_l [8]
+[22]     0.0    0.00    0.04     352         jacobi_l [22]
+                0.00    0.04     601/1488620     mod_l [4]
+                0.00    0.00    1906/6467561     copy_l [12]
+                0.00    0.00     953/958         gtzero_l [39]
+                0.00    0.00     352/1491044     comp_l [20]
+                0.00    0.00     352/5968212     purgevars_l [17]
+                0.00    0.00     131/1776        shright_l [34]
+                0.00    0.00    1436/4389        iseven_l [40]
+                0.00    0.00     352/6457023     eqz_l [19]
+                0.00    0.00    1072/283423068     lsdptr_l [13]
+                0.00    0.00     352/474         setone_l [48]
+-----------------------------------------------
+                0.00    0.00       1/4125521     ulseed64_l [45]
+                0.00    0.00       9/4125521     fermat_l [2]
+                0.00    0.00     703/4125521     rand64_l [24]
+                0.00    0.00    1115/4125521     sub [38]
+                0.00    0.00    1692/4125521     add [35]
+                0.00    0.00    5784/4125521     u2bigint_l [42]
+                0.00    0.00  498866/4125521     mul [11]
+                0.00    0.00  989844/4125521     sqr [10]
+                0.01    0.00 2627507/4125521     div_l [5]
+[23]     0.0    0.01    0.00 4125521         setdigits_l [23]
+-----------------------------------------------
+                0.00    0.00       9/703         ulrand64_l [41]
+                0.00    0.00     694/703         usrand64_l [25]
+[24]     0.0    0.00    0.00     703         rand64_l [24]
+                0.00    0.00     703/703         mul_l [27]
+                0.00    0.00     703/1692        uadd_l [28]
+                0.00    0.00     703/67177209     digits_l [18]
+                0.00    0.00     703/4125521     setdigits_l [23]
+-----------------------------------------------
+                0.00    0.00     694/694         rand_l [26]
+[25]     0.0    0.00    0.00     694         usrand64_l [25]
+                0.00    0.00     694/703         rand64_l [24]
+                0.00    0.00     694/67177209     digits_l [18]
+-----------------------------------------------
+                0.00    0.00       9/9           fermat_l [2]
+[26]     0.0    0.00    0.00       9         rand_l [26]
+                0.00    0.00     694/694         usrand64_l [25]
+-----------------------------------------------
+                0.00    0.00     703/703         rand64_l [24]
+[27]     0.0    0.00    0.00     703         mul_l [27]
+                0.00    0.00     703/498866      mul [11]
+                0.00    0.00    2109/6467561     copy_l [12]
+                0.00    0.00     703/5968212     purgevars_l [17]
+                0.00    0.00     703/67177209     digits_l [18]
+-----------------------------------------------
+                0.00    0.00     703/1692        rand64_l [24]
+                0.00    0.00     989/1692        fermat_l [2]
+[28]     0.0    0.00    0.00    1692         uadd_l [28]
+                0.00    0.00    1692/1692        add_l [29]
+                0.00    0.00    1692/5968212     purgevars_l [17]
+                0.00    0.00    1692/5784        u2bigint_l [42]
+-----------------------------------------------
+                0.00    0.00    1692/1692        uadd_l [28]
+[29]     0.0    0.00    0.00    1692         add_l [29]
+                0.00    0.00    5076/6467561     copy_l [12]
+                0.00    0.00    1692/1692        add [35]
+                0.00    0.00    1692/5968212     purgevars_l [17]
+                0.00    0.00    1692/67177209     digits_l [18]
+-----------------------------------------------
+                0.00    0.00     458/1109        SSprime_l [8]
+                0.00    0.00     651/1109        MRprime_l [7]
+[30]     0.0    0.00    0.00    1109         usub_l [30]
+                0.00    0.00    1109/1109        sub_l [31]
+                0.00    0.00    1109/5968212     purgevars_l [17]
+                0.00    0.00    1109/5784        u2bigint_l [42]
+-----------------------------------------------
+                0.00    0.00    1109/1109        usub_l [30]
+[31]     0.0    0.00    0.00    1109         sub_l [31]
+                0.00    0.00    3327/6467561     copy_l [12]
+                0.00    0.00    1109/1115        sub [38]
+                0.00    0.00    1109/1491044     comp_l [20]
+                0.00    0.00    1109/5968212     purgevars_l [17]
+-----------------------------------------------
+                0.00    0.00       6/6           fermat_l [2]
+[32]     0.0    0.00    0.00       6         eqmod_l [32]
+                0.00    0.00       6/6           submod_l [33]
+                0.00    0.00      12/6457023     eqz_l [19]
+-----------------------------------------------
+                0.00    0.00       6/6           eqmod_l [32]
+[33]     0.0    0.00    0.00       6         submod_l [33]
+                0.00    0.00       6/1488620     mod_l [4]
+                0.00    0.00      12/6467561     copy_l [12]
+                0.00    0.00       6/1115        sub [38]
+                0.00    0.00       6/6           ge_l [44]
+                0.00    0.00       5/958         gtzero_l [39]
+                0.00    0.00       6/5968212     purgevars_l [17]
+                0.00    0.00       6/6457023     eqz_l [19]
+                0.00    0.00       5/175642      setzero_l [47]
+-----------------------------------------------
+                0.00    0.00     131/1776        jacobi_l [22]
+                0.00    0.00     340/1776        SSprime_l [8]
+                0.00    0.00    1305/1776        MRprime_l [7]
+[34]     0.0    0.00    0.00    1776         shright_l [34]
+                0.00    0.00    1776/5968212     purgevars_l [17]
+                0.00    0.00    1776/6457023     eqz_l [19]
+                0.00    0.00    1776/16548402     rmldzeros_l [15]
+                0.00    0.00    1776/31568346     msdptr_l [16]
+                0.00    0.00    1776/283423068     lsdptr_l [13]
+-----------------------------------------------
+                0.00    0.00    1692/1692        add_l [29]
+[35]     0.0    0.00    0.00    1692         add [35]
+                0.00    0.00    1692/5968212     purgevars_l [17]
+                0.00    0.00    1692/16548402     rmldzeros_l [15]
+                0.00    0.00    3384/31568346     msdptr_l [16]
+                0.00    0.00    5076/283423068     lsdptr_l [13]
+                0.00    0.00    5076/67177209     digits_l [18]
+                0.00    0.00    1692/4125521     setdigits_l [23]
+-----------------------------------------------
+                0.00    0.00     352/2310        SSprime_l [8]
+                0.00    0.00    1958/2310        MRprime_l [7]
+[36]     0.0    0.00    0.00    2310         equ_l [36]
+                0.00    0.00    4620/16548402     rmldzeros_l [15]
+                0.00    0.00    4150/31568346     msdptr_l [16]
+                0.00    0.00    6930/67177209     digits_l [18]
+-----------------------------------------------
+                0.00    0.00       6/4996        expmodk_l [14]
+                0.00    0.00     340/4996        SSprime_l [8]
+                0.00    0.00    2030/4996        wexpmod_l [3]
+                0.00    0.00    2620/4996        MRprime_l [7]
+[37]     0.0    0.00    0.00    4996         eq1_l [37]
+                0.00    0.00    4996/16548402     rmldzeros_l [15]
+                0.00    0.00    4996/67177209     digits_l [18]
+                0.00    0.00      11/283423068     lsdptr_l [13]
+-----------------------------------------------
+                0.00    0.00       6/1115        submod_l [33]
+                0.00    0.00    1109/1115        sub_l [31]
+[38]     0.0    0.00    0.00    1115         sub [38]
+                0.00    0.00    1115/5968212     purgevars_l [17]
+                0.00    0.00    1115/16548402     rmldzeros_l [15]
+                0.00    0.00    2230/31568346     msdptr_l [16]
+                0.00    0.00    3345/283423068     lsdptr_l [13]
+                0.00    0.00    1115/67177209     digits_l [18]
+                0.00    0.00    1115/4125521     setdigits_l [23]
+-----------------------------------------------
+                0.00    0.00       5/958         submod_l [33]
+                0.00    0.00     953/958         jacobi_l [22]
+[39]     0.0    0.00    0.00     958         gtzero_l [39]
+                0.00    0.00     958/1491044     comp_l [20]
+                0.00    0.00     958/175642      setzero_l [47]
+-----------------------------------------------
+                0.00    0.00       6/4389        fermat_l [2]
+                0.00    0.00     991/4389        sieve_l [21]
+                0.00    0.00    1436/4389        jacobi_l [22]
+                0.00    0.00    1956/4389        MRprime_l [7]
+[40]     0.0    0.00    0.00    4389         iseven_l [40]
+                0.00    0.00    8778/67177209     digits_l [18]
+                0.00    0.00    4389/283423068     lsdptr_l [13]
+-----------------------------------------------
+                0.00    0.00       9/9           fermat_l [2]
+[41]     0.0    0.00    0.00       9         ulrand64_l [41]
+                0.00    0.00       9/703         rand64_l [24]
+                0.00    0.00       9/67177209     digits_l [18]
+-----------------------------------------------
+                0.00    0.00     352/5784        SSprime_l [8]
+                0.00    0.00     601/5784        div_l [5]
+                0.00    0.00    1109/5784        usub_l [30]
+                0.00    0.00    1692/5784        uadd_l [28]
+                0.00    0.00    2030/5784        wexpmod_l [3]
+[42]     0.0    0.00    0.00    5784         u2bigint_l [42]
+                0.00    0.00    5784/283423068     lsdptr_l [13]
+                0.00    0.00    5784/4125521     setdigits_l [23]
+-----------------------------------------------
+                0.00    0.00       6/6           expmodk_l [14]
+[43]     0.0    0.00    0.00       6         numbits_l [43]
+                0.00    0.00       6/6467561     copy_l [12]
+                0.00    0.00       6/5968212     purgevars_l [17]
+                0.00    0.00       6/16548402     rmldzeros_l [15]
+                0.00    0.00       6/67177209     digits_l [18]
+-----------------------------------------------
+                0.00    0.00       6/6           submod_l [33]
+[44]     0.0    0.00    0.00       6         ge_l [44]
+                0.00    0.00       6/1491044     comp_l [20]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[45]     0.0    0.00    0.00       1         ulseed64_l [45]
+                0.00    0.00       1/6467561     copy_l [12]
+                0.00    0.00       1/16548402     rmldzeros_l [15]
+                0.00    0.00       2/283423068     lsdptr_l [13]
+                0.00    0.00       1/4125521     setdigits_l [23]
+-----------------------------------------------
+                0.00    0.00 1530247/1530247     rmldzeros_l [15]
+[46]     0.0    0.00    0.00 1530247         decdigits_l [46]
+-----------------------------------------------
+                0.00    0.00       5/175642      submod_l [33]
+                0.00    0.00     112/175642      SSprime_l [8]
+                0.00    0.00     958/175642      gtzero_l [39]
+                0.00    0.00  174567/175642      div_l [5]
+[47]     0.0    0.00    0.00  175642         setzero_l [47]
+-----------------------------------------------
+                0.00    0.00     122/474         SSprime_l [8]
+                0.00    0.00     352/474         jacobi_l [22]
+[48]     0.0    0.00    0.00     474         setone_l [48]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+
+Index by function name
+
+   [7] MRprime_l              [39] gtzero_l               [47] setzero_l
+   [8] SSprime_l              [40] iseven_l               [34] shright_l
+  [35] add                    [22] jacobi_l               [21] sieve_l
+  [29] add_l                  [13] lsdptr_l               [10] sqr
+  [20] comp_l                  [4] mod_l                   [6] sqrmod_l
+  [12] copy_l                 [16] msdptr_l               [38] sub
+  [46] decdigits_l            [11] mul                    [31] sub_l
+  [18] digits_l               [27] mul_l                  [33] submod_l
+   [5] div_l                   [9] mulmod_l               [42] u2bigint_l
+  [37] eq1_l                  [43] numbits_l              [28] uadd_l
+  [32] eqmod_l                [17] purgevars_l (arithm.c) [41] ulrand64_l
+  [36] equ_l                  [24] rand64_l               [45] ulseed64_l
+  [19] eqz_l                  [26] rand_l                 [25] usrand64_l
+  [14] expmodk_l              [15] rmldzeros_l            [30] usub_l
+   [2] fermat_l (testprimec.c) [23] setdigits_l            [3] wexpmod_l
+  [44] ge_l                   [48] setone_l

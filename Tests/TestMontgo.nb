@@ -1,0 +1,275 @@
+(************** Content-type: application/mathematica **************
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[      3942,        177]*)
+(*NotebookOutlinePosition[      4571,        199]*)
+(*  CellTagsIndexPosition[      4527,        195]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+Cell[BoxData[
+    \(\(n = 15263846935509463535758382373563357;\)\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(B = 2^\((16)\)\)], "Input"],
+
+Cell[BoxData[
+    \(65536\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(N[Log[B, n]]\)], "Input"],
+
+Cell[BoxData[
+    \(7.097229614717639`\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(r = B^\((8)\)\)], "Input"],
+
+Cell[BoxData[
+    \(340282366920938463463374607431768211456\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(2^\((7)\) \[LessEqual] \ n < r\)], "Input"],
+
+Cell[BoxData[
+    \(True\)], "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+    \(\(a = 363573442796004646054749545784506;\)\)], "Input"],
+
+Cell[BoxData[
+    \(\(b = 1613674699462700358;\)\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(a < \ n\)], "Input"],
+
+Cell[BoxData[
+    \(True\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(b\  < \ n\)], "Input"],
+
+Cell[BoxData[
+    \(True\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(MulMon = Mod[a*b*PowerMod[r, \(-1\), n], n]\)], "Input"],
+
+Cell[BoxData[
+    \(13970805083234112236444444769960948\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(SqrMon = Mod[a^2*PowerMod[r, \(-1\), n], n]\)], "Input"],
+
+Cell[BoxData[
+    \(8689903357995890903252422328251234\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(n' = Mod[\(-PowerMod[n, \(-1\), r]\), r]\)], "Input"],
+
+Cell[BoxData[
+    \(131792285560648485041542554397964483467\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Mod[n\ *\ n'\  + 1, r]\)], "Input"],
+
+Cell[BoxData[
+    \(0\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(n0\  = \ Mod[n', 2^\((16)\)]\)], "Input"],
+
+Cell[BoxData[
+    \(48011\)], "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+    \(\(t[0] = a*b;\)\)], "Input"],
+
+Cell[BoxData[
+    \(t[i_] := 
+      t[i - 1] + 
+        Mod[Mod[Quotient[t[i - 1], B^\((i - 1)\)], B]*n0, B]*n*
+          B^\((i - 1)\)\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(t[8]\)], "Input"],
+
+Cell[BoxData[
+    \(283397233906833874239248878062212549298338678299380199279234555298237644\
+8\)], "Output"]
+}, Open  ]]
+},
+FrontEndVersion->"4.1 for X",
+ScreenRectangle->{{0, 1280}, {0, 1024}},
+WindowSize->{520, 600},
+WindowMargins->{{Automatic, 1}, {Automatic, 46}}
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+Cell[1705, 50, 77, 1, 27, "Input"],
+
+Cell[CellGroupData[{
+Cell[1807, 55, 47, 1, 27, "Input"],
+Cell[1857, 58, 39, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[1933, 64, 45, 1, 27, "Input"],
+Cell[1981, 67, 52, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[2070, 73, 46, 1, 27, "Input"],
+Cell[2119, 76, 73, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[2229, 82, 63, 1, 27, "Input"],
+Cell[2295, 85, 38, 1, 27, "Output"]
+}, Open  ]],
+Cell[2348, 89, 75, 1, 27, "Input"],
+Cell[2426, 92, 61, 1, 27, "Input"],
+
+Cell[CellGroupData[{
+Cell[2512, 97, 40, 1, 27, "Input"],
+Cell[2555, 100, 38, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[2630, 106, 42, 1, 27, "Input"],
+Cell[2675, 109, 38, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[2750, 115, 76, 1, 27, "Input"],
+Cell[2829, 118, 69, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[2935, 124, 76, 1, 27, "Input"],
+Cell[3014, 127, 68, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[3119, 133, 73, 1, 27, "Input"],
+Cell[3195, 136, 73, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[3305, 142, 55, 1, 27, "Input"],
+Cell[3363, 145, 35, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[3435, 151, 61, 1, 27, "Input"],
+Cell[3499, 154, 39, 1, 27, "Output"]
+}, Open  ]],
+Cell[3553, 158, 48, 1, 27, "Input"],
+Cell[3604, 161, 148, 4, 59, "Input"],
+
+Cell[CellGroupData[{
+Cell[3777, 169, 37, 1, 27, "Input"],
+Cell[3817, 172, 109, 2, 43, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

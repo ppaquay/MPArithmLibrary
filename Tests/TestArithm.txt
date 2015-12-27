@@ -1,0 +1,42 @@
+ 
+TEST DES FONCTIONS ARITHMETIQUES (BIGINTMAXDIGIT = 6U)
+
+Valeurs initiales :
+a_l = 40736 802 57469 26954 23549 36110 
+b_l = 21754 27770 59046 37388 47029 45318 
+c_l = 57169 4220 8 
+
+
+Resultats obtenus par arithm.c :
+a_l + b_l-OFL = -2
+a_l + b_l = 62490 28572 50979 64343 5042 15893 
+a_l + 60000-OFL = 0
+a_l + 60000 = 35200 803 57469 26954 23549 36110 
+a_l - b_l-UFL = -3
+a_l - b_l = 18982 38568 63958 55101 42055 56327 
+a_l - 60000-UFL = 0
+a_l - 60000 = 46272 801 57469 26954 23549 36110 
+a_l * b_l-OFL = -2
+a_l * b_l = 58688 49477 18301 63128 59465 25922 
+a_l * 60000-OFL = -2
+a_l * 60000 = 60416 53870 29630 60742 8517 1400 
+a_l * a_l-OFL = -2
+a_l * a_l = 50176 26472 14761 58577 32340 37058 
+b_l * b_l-OFL = -2
+b_l * b_l = 1060 2685 56928 52414 49413 15702 
+b_l / a_l-DBZ = 0
+b_l / a_l = 1 
+b_l mod a_l = 46554 26967 1577 10434 23480 9208 
+b_l * b_l / c_l-DBZ = 0
+b_l * b_l / c_l = 63707 49117 42550 25070 25606 28746 20502 23214 85 3886 
+b_l * b_l mod c_l = 33241 48998 
+a_l / 60000-DBZ = 0
+a_l / 60000 = 19086 17997 35803 9294 39442 
+a_l mod 60000 = 56800 
+b_l / a_l-DBZ = 0
+b_l mod a_l = 46554 26967 1577 10434 23480 9208 
+a_l mod 60000 = 56800
+
+
+Solutions conformes a celles de Mathematica 4.1 (Voir MathematicaEssaiArithElem.nb)
+

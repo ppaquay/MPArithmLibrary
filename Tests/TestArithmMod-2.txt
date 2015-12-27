@@ -1,0 +1,32 @@
+ 
+TEST DES FONCTIONS ARITHMETIQUES MODULO (BIGINTMAXDIGIT = 6U)
+
+Valeurs initiales :
+a_l = 42408 49667 49634 44337 41988 29479 
+b_l = 32965 36330 30617 9061 54 
+m_l = 61127 61135 38898 48816 25726 
+c_l = 28414 32662 62120 10582 38610 43747 
+
+
+Resultats obtenus par arithm.c :
+a_l + b_l mod m_l-DBZ = 0
+a_l + b_l mod m_l = 20229 15402 62118 9721 2153 
+a_l - b_l mod m_l-DBZ = 0
+a_l - b_l mod m_l = 19835 8277 883 57135 2044 
+-a_l + b_l mod m_l-DBZ = 0
+-a_l + b_l mod m_l = 41292 52858 38015 57217 23681 
+a_l * b_l mod m_l-DBZ = 0
+a_l * b_l mod m_l = 63427 16792 27272 21367 14153 
+a_l * a_l mod m_l-DBZ = 0
+a_l * a_l mod m_l = 57907 11599 15958 4387 21919 
+b_l * b_l mod m_l-DBZ = 0
+b_l * b_l mod m_l = 14905 17103 59973 50601 22727 
+a_l + 60001 mod m_l-DBZ = 0
+a_l + 60001 mod m_l = 47265 44608 31500 660 2099 
+a_l =? c_l mod m_l-OUI = 1
+a_l =? b_l mod m_l-OUI = 0
+
+
+
+Solutions conformes a celles de Mathematica 4.1 (Voir MathematicaEssaiArithMod.nb)
+

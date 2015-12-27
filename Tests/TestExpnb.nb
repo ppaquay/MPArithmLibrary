@@ -1,0 +1,242 @@
+(************** Content-type: application/mathematica **************
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[      8143,        182]*)
+(*NotebookOutlinePosition[      9212,        214]*)
+(*  CellTagsIndexPosition[      9168,        210]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+Cell[BoxData[
+    \(Mu1[k_, e_] := 
+      Floor[2^\ k\  - \ 2\  + \ 
+          Floor[Log[2, 
+                2^e - 1]] \((1 + \((2^\ k - 1)\)/\((k*2^\ k)\))\)]\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \($MaxExtraPrecision = 100000\)], "Input"],
+
+Cell[BoxData[
+    \(100000\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(TableForm[Table[Mu1[k, e], {k, 1, 16}, {e, 512, 8192, 512}]]\)], "Input"],
+
+Cell[BoxData[
+    TagBox[GridBox[{
+          {"766", "1534", "2302", "3070", "3838", "4606", "5374", "6142", 
+            "6910", "7678", "8446", "9214", "9982", "10750", "11518", 
+            "12286"},
+          {"704", "1408", "2112", "2816", "3520", "4224", "4928", "5632", 
+            "6336", "7040", "7744", "8448", "9152", "9856", "10560", 
+            "11264"},
+          {"666", "1327", "1988", "2650", "3311", "3972", "4634", "5295", 
+            "5956", "6618", "7279", "7940", "8602", "9263", "9924", "10586"},
+          {"644", "1276", "1908", "2540", "3172", "3804", "4436", "5068", 
+            "5700", "6332", "6964", "7596", "8228", "8860", "9492", "10124"},
+          {"640", "1251", "1862", "2473", "3084", "3696", "4307", "4918", 
+            "5529", "6140", "6752", "7363", "7974", "8585", "9196", "9808"},
+          {"656", "1252", "1848", "2444", "3040", "3636", "4232", "4828", 
+            "5424", "6020", "6616", "7212", "7808", "8404", "9000", "9596"},
+          {"709", "1294", "1878", "2463", "3047", "3632", "4216", "4801", 
+            "5386", "5970", "6555", "7139", "7724", "8308", "8893", "9478"},
+          {"828", "1404", "1980", "2555", "3131", "3707", "4283", "4858", 
+            "5434", "6010", "6586", "7161", "7737", "8313", "8889", "9464"},
+          {"1077", "1646", "2215", "2784", "3352", "3921", "4490", "5059", 
+            "5627", "6196", "6765", "7334", "7903", "8471", "9040", "9609"},
+          {"1584", "2147", "2710", "3273", "3836", "4399", "4962", "5526", 
+            "6089", "6652", "7215", "7778", "8341", "8905", "9468", "10031"},
+          {"2603", "3161", "3720", "4279", "4837", "5396", "5954", "6513", 
+            "7071", "7630", "8188", "8747", "9305", "9864", "10422", 
+            "10981"},
+          {"4647", "5202", "5756", "6311", "6866", "7420", "7975", "8530", 
+            "9084", "9639", "10194", "10748", "11303", "11858", "12412", 
+            "12967"},
+          {"8740", "9291", "9843", "10394", "10945", "11497", "12048", 
+            "12599", "13151", "13702", "14254", "14805", "15356", "15908", 
+            "16459", "17011"},
+          {"16929", "17478", "18026", "18575", "19123", "19672", "20220", 
+            "20769", "21318", "21866", "22415", "22963", "23512", "24060", 
+            "24609", "25158"},
+          {"33311", "33857", "34403", "34949", "35495", "36041", "36587", 
+            "37133", "37680", "38226", "38772", "39318", "39864", "40410", 
+            "40956", "41503"},
+          {"66076", "66620", "67164", "67708", "68252", "68796", "69340", 
+            "69884", "70428", "70972", "71516", "72060", "72604", "73148", 
+            "73692", "74236"}
+          },
+        RowSpacings->1,
+        ColumnSpacings->3,
+        RowAlignments->Baseline,
+        ColumnAlignments->{Left}],
+      Function[ BoxForm`e$, 
+        TableForm[ BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+    \(Mu2[k_, e_] := 
+      Floor[2^\((k - 1)\) + 
+          Floor[Log[2, 
+                2^e - 1]] \((1 + \((2^k - 1)\)/\((k*2^k)\))\)]\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(TableForm[Table[Mu2[k, e], {k, 1, 16}, {e, 512, 8192, 512}]]\)], "Input"],
+
+Cell[BoxData[
+    TagBox[GridBox[{
+          {"767", "1535", "2303", "3071", "3839", "4607", "5375", "6143", 
+            "6911", "7679", "8447", "9215", "9983", "10751", "11519", 
+            "12287"},
+          {"704", "1408", "2112", "2816", "3520", "4224", "4928", "5632", 
+            "6336", "7040", "7744", "8448", "9152", "9856", "10560", 
+            "11264"},
+          {"664", "1325", "1986", "2648", "3309", "3970", "4632", "5293", 
+            "5954", "6616", "7277", "7938", "8600", "9261", "9922", "10584"},
+          {"638", "1270", "1902", "2534", "3166", "3798", "4430", "5062", 
+            "5694", "6326", "6958", "7590", "8222", "8854", "9486", "10118"},
+          {"626", "1237", "1848", "2459", "3070", "3682", "4293", "4904", 
+            "5515", "6126", "6738", "7349", "7960", "8571", "9182", "9794"},
+          {"626", "1222", "1818", "2414", "3010", "3606", "4202", "4798", 
+            "5394", "5990", "6586", "7182", "7778", "8374", "8970", "9566"},
+          {"647", "1232", "1816", "2401", "2985", "3570", "4154", "4739", 
+            "5324", "5908", "6493", "7077", "7662", "8246", "8831", "9416"},
+          {"702", "1278", "1854", "2429", "3005", "3581", "4157", "4732", 
+            "5308", "5884", "6460", "7035", "7611", "8187", "8763", "9338"},
+          {"823", "1392", "1961", "2530", "3098", "3667", "4236", "4805", 
+            "5373", "5942", "6511", "7080", "7649", "8217", "8786", "9355"},
+          {"1074", "1637", "2200", "2763", "3326", "3889", "4452", "5016", 
+            "5579", "6142", "6705", "7268", "7831", "8395", "8958", "9521"},
+          {"1581", "2139", "2698", "3257", "3815", "4374", "4932", "5491", 
+            "6049", "6608", "7166", "7725", "8283", "8842", "9400", "9959"},
+          {"2601", "3156", "3710", "4265", "4820", "5374", "5929", "6484", 
+            "7038", "7593", "8148", "8702", "9257", "9812", "10366", 
+            "10921"},
+          {"4646", "5197", "5749", "6300", "6851", "7403", "7954", "8505", 
+            "9057", "9608", "10160", "10711", "11262", "11814", "12365", 
+            "12917"},
+          {"8739", "9288", "9836", "10385", "10933", "11482", "12030", 
+            "12579", "13128", "13676", "14225", "14773", "15322", "15870", 
+            "16419", "16968"},
+          {"16929", "17475", "18021", "18567", "19113", "19659", "20205", 
+            "20751", "21298", "21844", "22390", "22936", "23482", "24028", 
+            "24574", "25121"},
+          {"33310", "33854", "34398", "34942", "35486", "36030", "36574", 
+            "37118", "37662", "38206", "38750", "39294", "39838", "40382", 
+            "40926", "41470"}
+          },
+        RowSpacings->1,
+        ColumnSpacings->3,
+        RowAlignments->Baseline,
+        ColumnAlignments->{Left}],
+      Function[ BoxForm`e$, 
+        TableForm[ BoxForm`e$]]]], "Output"]
+}, Open  ]]
+},
+FrontEndVersion->"4.1 for X",
+ScreenRectangle->{{0, 1280}, {0, 1024}},
+WindowSize->{1215, 737},
+WindowMargins->{{0, Automatic}, {Automatic, 54}},
+PrintingPageRange->{Automatic, Automatic},
+PrintingOptions->{"PrintingMargins"->{{54, 54}, {72, 72}},
+"PaperSize"->{597.562, 842.375},
+"PaperOrientation"->"Portrait",
+"PrintCellBrackets"->False,
+"PrintRegistrationMarks"->True,
+"PrintMultipleHorizontalPages"->True,
+"PostScriptOutputFile":>FrontEnd`FileName[{$RootDirectory, "home", "pierre", \
+"Crypto", "Tests"}, "TestExpnb.nb.ps", CharacterEncoding -> "ISO8859-1"],
+"Magnification"->1}
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+Cell[1705, 50, 172, 4, 27, "Input"],
+
+Cell[CellGroupData[{
+Cell[1902, 58, 60, 1, 27, "Input"],
+Cell[1965, 61, 40, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[2042, 67, 93, 1, 27, "Input"],
+Cell[2138, 70, 2860, 48, 310, "Output"]
+}, Open  ]],
+Cell[5013, 121, 164, 4, 27, "Input"],
+
+Cell[CellGroupData[{
+Cell[5202, 129, 93, 1, 27, "Input"],
+Cell[5298, 132, 2829, 47, 310, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

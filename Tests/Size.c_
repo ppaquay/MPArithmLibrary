@@ -1,0 +1,14 @@
+/* Test de la taille des mots sur un processeur 32bits */
+
+#include <stdio.h>
+#include "libarithm-0.9.3.h"
+
+int main()
+{
+  printf("Taille de int: %d octets, donc %d bits\n", sizeof(int), sizeof(int) * 8);
+  printf("Taille de long: %d octets, donc %d bits\n", sizeof(long), sizeof(long) * 8);
+  printf("Taille de unsigned short (bigint): %d octets, donc %d bits\n", sizeof(unsigned short), sizeof(unsigned short) * 8);
+  printf("Taille de unsigned long (bigintd): %d octets, donc %d bits\n", sizeof(unsigned long), sizeof(unsigned long) * 8);
+ printf("Taille de unsigned long long: %d octets, donc %d bits\n", sizeof(unsigned long long), sizeof(unsigned long long) * 8);
+ printf("Taille de unsigned BIGINT: %d octets, donc %d bits\n", sizeof(BIGINT), sizeof(BIGINT) * 8);
+}

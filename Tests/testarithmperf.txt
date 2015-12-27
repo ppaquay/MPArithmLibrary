@@ -1,0 +1,496 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 52.52     69.28    69.28                             mulofl_l
+ 16.90     91.57    22.29                             sqrneu_l
+ 15.78    112.38    20.81                             subu_l
+ 10.99    126.87    14.49                             muldis_l
+  1.18    128.43     1.56 336648933     0.00     0.00  addcomm_l
+  1.04    129.80     1.37  6643677     0.00     0.00  addass_l
+  0.67    130.69     0.89                             subadd_l
+  0.35    131.15     0.46                             mulu_l
+  0.24    131.46     0.31  5968212     0.00     0.00  sqrmoddis_l
+  0.08    131.56     0.10      991     0.10     0.10  mulmodu_l
+  0.05    131.62     0.06  1488620     0.00     0.00  mulass_l
+  0.04    131.67     0.05  6469682     0.00     0.00  addu_l
+  0.03    131.71     0.04  1488013     0.00     0.00  divsmall_l
+  0.03    131.75     0.04   989844     0.00     0.00  subass_l
+  0.02    131.78     0.03  1491044     0.00     0.00  addsub_l
+  0.02    131.81     0.03  1488620     0.00     0.00  sqrofl_l
+  0.02    131.84     0.03   499981     0.00     0.00  subneu_l
+  0.02    131.86     0.02        6     3.33     3.34  divrem_l
+  0.02    131.88     0.02                             sqrmul_l
+  0.01    131.89     0.01     1015     0.01     0.01  divs5_l
+  0.01    131.90     0.01                             sqrpot_l
+  0.00    131.90     0.00     7476     0.00     0.00  subufl_l
+  0.00    131.90     0.00     3504     0.00     0.00  mulcomm_l
+  0.00    131.90     0.00     1776     0.00     0.00  addmodcom_l
+  0.00    131.90     0.00     1692     0.00     0.00  addofl_l
+  0.00    131.90     0.00      703     0.00     0.00  sqrmodmul_l
+  0.00    131.90     0.00      651     0.00     0.00  mulmoddis_l
+  0.00    131.90     0.00      352     0.00     0.00  submodu_l
+  0.00    131.90     0.00      340     0.00     0.00  sqrmodneu_l
+  0.00    131.90     0.00       19     0.00     0.00  sqrmodpot_l
+  0.00    131.90     0.00        6     0.00     0.00  divmod_l
+  0.00    131.90     0.00        6     0.00     0.00  divsub_l
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+ 
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this 
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 4 byte(s) for 0.01% of 131.90 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     52.5   69.28    0.00                 mulofl_l [1]
+                0.00    0.00     468/296520044     addcomm_l <cycle 1> [7]
+-----------------------------------------------
+                                                 <spontaneous>
+[2]     16.9   22.29    0.00                 sqrneu_l [2]
+-----------------------------------------------
+                                                 <spontaneous>
+[3]     15.9   20.81    0.12                 subu_l [3]
+                0.07    0.00 5939064/296520044     addcomm_l <cycle 1> [7]
+                0.05    0.00  989844/5968212     sqrmoddis_l [10]
+-----------------------------------------------
+                                                 <spontaneous>
+[4]     11.7   14.49    0.92                 muldis_l [4]
+                0.87    0.05 76931412/296520044     addcomm_l <cycle 1> [7]
+-----------------------------------------------
+[5]      2.7    3.34    0.19 296520044+60706907 <cycle 1 as a whole> [5]
+                1.56    0.00 336648933+67723861     addcomm_l <cycle 1> [7]
+                1.37    0.00 6643677             addass_l <cycle 1> [9]
+                0.04    0.08 1488013             divsmall_l <cycle 1> [11]
+                0.03    0.08 1488620             sqrofl_l <cycle 1> [12]
+                0.10    0.00     991             mulmodu_l <cycle 1> [13]
+                0.06    0.01 1488620             mulass_l <cycle 1> [16]
+                0.03    0.03  499981             subneu_l <cycle 1> [17]
+                0.05    0.00 6469682             addu_l <cycle 1> [18]
+                0.04    0.00  989844             subass_l <cycle 1> [19]
+                0.03    0.00 1491044             addsub_l <cycle 1> [20]
+                0.02    0.00       6             divrem_l <cycle 1> [21]
+                0.01    0.00    1015             divs5_l <cycle 1> [22]
+                0.00    0.00    3504+1109        mulcomm_l <cycle 1> [24]
+                0.00    0.00    1776             addmodcom_l <cycle 1> [25]
+                0.00    0.00    1692             addofl_l <cycle 1> [26]
+                0.00    0.00     340             sqrmodneu_l <cycle 1> [28]
+                0.00    0.00       6             divmod_l <cycle 1> [30]
+                0.00    0.00    7476             subufl_l <cycle 1> [31]
+                0.00    0.00      19+694         sqrmodpot_l <cycle 1> [34]
+                0.00    0.00     651             mulmoddis_l <cycle 1> [32]
+                0.00    0.00     352             submodu_l <cycle 1> [33]
+                0.00    0.00       6             divsub_l <cycle 1> [35]
+-----------------------------------------------
+                                                 <spontaneous>
+[6]      1.7    0.89    1.36                 subadd_l [6]
+                1.28    0.07 114009912/296520044     addcomm_l <cycle 1> [7]
+-----------------------------------------------
+                             67723861             addcomm_l <cycle 1> [7]
+                                  12             divmod_l <cycle 1> [30]
+                                 703             mulcomm_l <cycle 1> [24]
+                                 707             sqrmodpot_l <cycle 1> [34]
+                                1406             sqrmodmul_l <cycle 1> [29]
+                                2030             divs5_l <cycle 1> [22]
+                                5328             addmodcom_l <cycle 1> [25]
+                               13260             subufl_l <cycle 1> [31]
+                               18930             addofl_l <cycle 1> [26]
+                              125087             divrem_l <cycle 1> [21]
+                             2977240             mulass_l <cycle 1> [16]
+                             3342286             mulmodu_l <cycle 1> [13]
+                             5004348             subneu_l <cycle 1> [17]
+                             6487115             addu_l <cycle 1> [18]
+                             6928908             subass_l <cycle 1> [19]
+                             7997808             addass_l <cycle 1> [9]
+                             8889412             addsub_l <cycle 1> [20]
+                0.00    0.00     468/296520044     mulofl_l [1]
+                0.00    0.00    1072/296520044     mulmodcom_l [27]
+                0.00    0.00   24563/296520044     sqrbin_l [23]
+                0.01    0.00 1314054/296520044     sqrpot_l [15]
+                0.06    0.00 5253812/296520044     sqrmul_l [14]
+                0.07    0.00 5939064/296520044     subu_l [3]
+                0.87    0.05 76931412/296520044     muldis_l [4]
+                1.03    0.06 91379996/296520044     mulu_l [8]
+                1.28    0.07 114009912/296520044     subadd_l [6]
+[7]      1.2    1.56    0.00 336648933+67723861 addcomm_l <cycle 1> [7]
+                                 989             mulcomm_l <cycle 1> [24]
+                                 651             mulmoddis_l <cycle 1> [32]
+                                 340             sqrmodneu_l <cycle 1> [28]
+                                  19             sqrmodpot_l <cycle 1> [34]
+                                  12             addu_l <cycle 1> [18]
+                                   6             divrem_l <cycle 1> [21]
+                                   6             divsub_l <cycle 1> [35]
+                             67723861             addcomm_l <cycle 1> [7]
+-----------------------------------------------
+                                                 <spontaneous>
+[8]      1.2    0.46    1.09                 mulu_l [8]
+                1.03    0.06 91379996/296520044     addcomm_l <cycle 1> [7]
+-----------------------------------------------
+                                   1             sqrmodpot_l <cycle 1> [34]
+                                  12             divmod_l <cycle 1> [30]
+                                 234             sqrmodmul_l <cycle 1> [29]
+                                 340             sqrmodneu_l <cycle 1> [28]
+                                 704             submodu_l <cycle 1> [33]
+                                 958             addu_l <cycle 1> [18]
+                                1015             divs5_l <cycle 1> [22]
+                                1033             divrem_l <cycle 1> [21]
+                                1302             mulmoddis_l <cycle 1> [32]
+                                5076             subufl_l <cycle 1> [31]
+                                5436             mulcomm_l <cycle 1> [24]
+                             1986187             divsmall_l <cycle 1> [11]
+                             2977242             mulass_l <cycle 1> [16]
+                0.00    0.00    1554/296520044     mulmodcom_l [27]
+                0.00    0.00  349130/296520044     sqrbin_l [23]
+                0.01    0.00 1313453/296520044     sqrmul_l [14]
+[9]      1.0    1.37    0.00 6643677         addass_l <cycle 1> [9]
+                             7997808             addcomm_l <cycle 1> [7]
+-----------------------------------------------
+                0.00    0.00      12/5968212     divmod_l <cycle 1> [30]
+                0.00    0.00     340/5968212     sqrmodmul_l <cycle 1> [29]
+                0.00    0.00     352/5968212     mulmodcom_l [27]
+                0.00    0.00     601/5968212     sqrbin_l [23]
+                0.00    0.00     651/5968212     sqrmodneu_l <cycle 1> [28]
+                0.00    0.00     991/5968212     mulmodu_l <cycle 1> [13]
+                0.00    0.00    1015/5968212     divrem_l <cycle 1> [21]
+                0.00    0.00    1692/5968212     addofl_l <cycle 1> [26]
+                0.00    0.00    1776/5968212     addmodcom_l <cycle 1> [25]
+                0.00    0.00    6305/5968212     mulcomm_l <cycle 1> [24]
+                0.01    0.00  174566/5968212     mulass_l <cycle 1> [16]
+                0.03    0.00  499981/5968212     subneu_l <cycle 1> [17]
+                0.05    0.00  989844/5968212     subu_l [3]
+                0.07    0.00 1313453/5968212     sqrpot_l [15]
+                0.08    0.00 1488013/5968212     divsmall_l <cycle 1> [11]
+                0.08    0.00 1488620/5968212     sqrofl_l <cycle 1> [12]
+[10]     0.2    0.31    0.00 5968212         sqrmoddis_l [10]
+-----------------------------------------------
+                                   6             divsub_l <cycle 1> [35]
+                                 654             sqrmodneu_l <cycle 1> [28]
+                                5178             divmod_l <cycle 1> [30]
+                             1482175             divrem_l <cycle 1> [21]
+[11]     0.1    0.04    0.08 1488013         divsmall_l <cycle 1> [11]
+                0.08    0.00 1488013/5968212     sqrmoddis_l [10]
+                             1986187             addass_l <cycle 1> [9]
+                             1488024             addu_l <cycle 1> [18]
+                             1488013             sqrofl_l <cycle 1> [12]
+                              989844             subass_l <cycle 1> [19]
+                              498169             subneu_l <cycle 1> [17]
+-----------------------------------------------
+                                   6             divrem_l <cycle 1> [21]
+                             1488013             divsmall_l <cycle 1> [11]
+                0.00    0.00     601/296520044     mulmodcom_l [27]
+[12]     0.1    0.03    0.08 1488620         sqrofl_l <cycle 1> [12]
+                0.08    0.00 1488620/5968212     sqrmoddis_l [10]
+                             1488620             mulass_l <cycle 1> [16]
+-----------------------------------------------
+                                 340             sqrmodneu_l <cycle 1> [28]
+                                 651             mulmoddis_l <cycle 1> [32]
+[13]     0.1    0.10    0.00     991         mulmodu_l <cycle 1> [13]
+                0.00    0.00     991/5968212     sqrmoddis_l [10]
+                             3342286             addcomm_l <cycle 1> [7]
+                                 991             addu_l <cycle 1> [18]
+-----------------------------------------------
+                                                 <spontaneous>
+[14]     0.1    0.02    0.08                 sqrmul_l [14]
+                0.06    0.00 5253812/296520044     addcomm_l <cycle 1> [7]
+                0.01    0.00 1313453/296520044     addass_l <cycle 1> [9]
+-----------------------------------------------
+                                                 <spontaneous>
+[15]     0.1    0.01    0.08                 sqrpot_l [15]
+                0.07    0.00 1313453/5968212     sqrmoddis_l [10]
+                0.01    0.00 1314054/296520044     addcomm_l <cycle 1> [7]
+-----------------------------------------------
+                             1488620             sqrofl_l <cycle 1> [12]
+[16]     0.1    0.06    0.01 1488620         mulass_l <cycle 1> [16]
+                0.01    0.00  174566/5968212     sqrmoddis_l [10]
+                             2977242             addass_l <cycle 1> [9]
+                             2977240             addcomm_l <cycle 1> [7]
+                             2977240             addu_l <cycle 1> [18]
+                             1488619             addsub_l <cycle 1> [20]
+-----------------------------------------------
+                                1812             mulcomm_l <cycle 1> [24]
+                              498169             divsmall_l <cycle 1> [11]
+[17]     0.0    0.03    0.03  499981         subneu_l <cycle 1> [17]
+                0.03    0.00  499981/5968212     sqrmoddis_l [10]
+                             5004348             addcomm_l <cycle 1> [7]
+                              997732             addu_l <cycle 1> [18]
+-----------------------------------------------
+                                  12             addcomm_l <cycle 1> [7]
+                                  12             divsub_l <cycle 1> [35]
+                                  24             divrem_l <cycle 1> [21]
+                                 352             sqrmodmul_l <cycle 1> [29]
+                                 991             mulmodu_l <cycle 1> [13]
+                                1776             addmodcom_l <cycle 1> [25]
+                                2607             mulmoddis_l <cycle 1> [32]
+                                2741             submodu_l <cycle 1> [33]
+                                4060             divs5_l <cycle 1> [22]
+                                4267             sqrmodneu_l <cycle 1> [28]
+                              989844             subass_l <cycle 1> [19]
+                              997732             subneu_l <cycle 1> [17]
+                             1488024             divsmall_l <cycle 1> [11]
+                             2977240             mulass_l <cycle 1> [16]
+[18]     0.0    0.05    0.00 6469682         addu_l <cycle 1> [18]
+                             6487115             addcomm_l <cycle 1> [7]
+                                 964             addsub_l <cycle 1> [20]
+                                 958             addass_l <cycle 1> [9]
+-----------------------------------------------
+                              989844             divsmall_l <cycle 1> [11]
+[19]     0.0    0.04    0.00  989844         subass_l <cycle 1> [19]
+                             6928908             addcomm_l <cycle 1> [7]
+                              989844             addu_l <cycle 1> [18]
+-----------------------------------------------
+                                 964             addu_l <cycle 1> [18]
+                                1109             mulcomm_l <cycle 1> [24]
+                             1488619             mulass_l <cycle 1> [16]
+                0.00    0.00     352/296520044     mulmodcom_l [27]
+[20]     0.0    0.03    0.00 1491044         addsub_l <cycle 1> [20]
+                             8889412             addcomm_l <cycle 1> [7]
+-----------------------------------------------
+                                   6             addcomm_l <cycle 1> [7]
+[21]     0.0    0.02    0.00       6         divrem_l <cycle 1> [21]
+                0.00    0.00    1015/5968212     sqrmoddis_l [10]
+                             1482175             divsmall_l <cycle 1> [11]
+                              125087             addcomm_l <cycle 1> [7]
+                                1033             addass_l <cycle 1> [9]
+                                  24             addu_l <cycle 1> [18]
+                                   6             divmod_l <cycle 1> [30]
+                                   6             sqrofl_l <cycle 1> [12]
+-----------------------------------------------
+                                 352             sqrmodneu_l <cycle 1> [28]
+                                 663             mulmoddis_l <cycle 1> [32]
+[22]     0.0    0.01    0.00    1015         divs5_l <cycle 1> [22]
+                                4060             addu_l <cycle 1> [18]
+                                2030             addcomm_l <cycle 1> [7]
+                                2030             subufl_l <cycle 1> [31]
+                                1015             addass_l <cycle 1> [9]
+-----------------------------------------------
+                                                 <spontaneous>
+[23]     0.0    0.00    0.00                 sqrbin_l [23]
+                0.00    0.00  349130/296520044     addass_l <cycle 1> [9]
+                0.00    0.00   24563/296520044     addcomm_l <cycle 1> [7]
+                0.00    0.00     601/5968212     sqrmoddis_l [10]
+                0.00    0.00     601/296520044     subufl_l <cycle 1> [31]
+-----------------------------------------------
+                                1109             mulcomm_l <cycle 1> [24]
+                                 340             sqrmodneu_l <cycle 1> [28]
+                                 651             mulmoddis_l <cycle 1> [32]
+                                 989             addcomm_l <cycle 1> [7]
+                                1524             sqrmodmul_l <cycle 1> [29]
+[24]     0.0    0.00    0.00    3504+1109    mulcomm_l <cycle 1> [24]
+                0.00    0.00    6305/5968212     sqrmoddis_l [10]
+                                5436             addass_l <cycle 1> [9]
+                                4493             subufl_l <cycle 1> [31]
+                                1812             subneu_l <cycle 1> [17]
+                                1109             addsub_l <cycle 1> [20]
+                                 703             addcomm_l <cycle 1> [7]
+                                1109             mulcomm_l <cycle 1> [24]
+-----------------------------------------------
+                                 131             submodu_l <cycle 1> [33]
+                                 340             sqrmodneu_l <cycle 1> [28]
+                                1305             mulmoddis_l <cycle 1> [32]
+[25]     0.0    0.00    0.00    1776         addmodcom_l <cycle 1> [25]
+                0.00    0.00    1776/5968212     sqrmoddis_l [10]
+                                5328             addcomm_l <cycle 1> [7]
+                                1776             addu_l <cycle 1> [18]
+-----------------------------------------------
+                                1692             subufl_l <cycle 1> [31]
+[26]     0.0    0.00    0.00    1692         addofl_l <cycle 1> [26]
+                0.00    0.00    1692/5968212     sqrmoddis_l [10]
+                               18930             addcomm_l <cycle 1> [7]
+-----------------------------------------------
+                                                 <spontaneous>
+[27]     0.0    0.00    0.00                 mulmodcom_l [27]
+                0.00    0.00    1554/296520044     addass_l <cycle 1> [9]
+                0.00    0.00     352/5968212     sqrmoddis_l [10]
+                0.00    0.00    1072/296520044     addcomm_l <cycle 1> [7]
+                0.00    0.00     601/296520044     sqrofl_l <cycle 1> [12]
+                0.00    0.00     352/296520044     addsub_l <cycle 1> [20]
+-----------------------------------------------
+                                 340             addcomm_l <cycle 1> [7]
+[28]     0.0    0.00    0.00     340         sqrmodneu_l <cycle 1> [28]
+                0.00    0.00     651/5968212     sqrmoddis_l [10]
+                                4267             addu_l <cycle 1> [18]
+                                 654             divsmall_l <cycle 1> [11]
+                                 352             divs5_l <cycle 1> [22]
+                                 352             subufl_l <cycle 1> [31]
+                                 352             submodu_l <cycle 1> [33]
+                                 340             mulmodu_l <cycle 1> [13]
+                                 340             addass_l <cycle 1> [9]
+                                 340             mulcomm_l <cycle 1> [24]
+                                 340             addmodcom_l <cycle 1> [25]
+-----------------------------------------------
+                                 703             sqrmodpot_l <cycle 1> [34]
+[29]     0.0    0.00    0.00     703         sqrmodmul_l <cycle 1> [29]
+                0.00    0.00     340/5968212     sqrmoddis_l [10]
+                                1524             mulcomm_l <cycle 1> [24]
+                                1406             addcomm_l <cycle 1> [7]
+                                 352             addu_l <cycle 1> [18]
+                                 234             addass_l <cycle 1> [9]
+-----------------------------------------------
+                                   6             divrem_l <cycle 1> [21]
+[30]     0.0    0.00    0.00       6         divmod_l <cycle 1> [30]
+                0.00    0.00      12/5968212     sqrmoddis_l [10]
+                                5178             divsmall_l <cycle 1> [11]
+                                  12             addass_l <cycle 1> [9]
+                                  12             addcomm_l <cycle 1> [7]
+-----------------------------------------------
+                                 352             sqrmodneu_l <cycle 1> [28]
+                                2030             divs5_l <cycle 1> [22]
+                                4493             mulcomm_l <cycle 1> [24]
+                0.00    0.00     601/296520044     sqrbin_l [23]
+[31]     0.0    0.00    0.00    7476         subufl_l <cycle 1> [31]
+                               13260             addcomm_l <cycle 1> [7]
+                                5076             addass_l <cycle 1> [9]
+                                1692             addofl_l <cycle 1> [26]
+-----------------------------------------------
+                                 651             addcomm_l <cycle 1> [7]
+[32]     0.0    0.00    0.00     651         mulmoddis_l <cycle 1> [32]
+                                2607             addu_l <cycle 1> [18]
+                                1305             addmodcom_l <cycle 1> [25]
+                                1302             addass_l <cycle 1> [9]
+                                 663             divs5_l <cycle 1> [22]
+                                 651             mulmodu_l <cycle 1> [13]
+                                 651             mulcomm_l <cycle 1> [24]
+-----------------------------------------------
+                                 352             sqrmodneu_l <cycle 1> [28]
+[33]     0.0    0.00    0.00     352         submodu_l <cycle 1> [33]
+                                2741             addu_l <cycle 1> [18]
+                                 704             addass_l <cycle 1> [9]
+                                 131             addmodcom_l <cycle 1> [25]
+-----------------------------------------------
+                                 694             sqrmodpot_l <cycle 1> [34]
+                                  19             addcomm_l <cycle 1> [7]
+[34]     0.0    0.00    0.00      19+694     sqrmodpot_l <cycle 1> [34]
+                                 707             addcomm_l <cycle 1> [7]
+                                 703             sqrmodmul_l <cycle 1> [29]
+                                   1             addass_l <cycle 1> [9]
+                                 694             sqrmodpot_l <cycle 1> [34]
+-----------------------------------------------
+                                   6             addcomm_l <cycle 1> [7]
+[35]     0.0    0.00    0.00       6         divsub_l <cycle 1> [35]
+                                  12             addu_l <cycle 1> [18]
+                                   6             divsmall_l <cycle 1> [11]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+
+Index by function name
+
+   [9] addass_l               [16] mulass_l               [14] sqrmul_l
+   [7] addcomm_l              [24] mulcomm_l               [2] sqrneu_l
+  [25] addmodcom_l             [4] muldis_l               [12] sqrofl_l
+  [26] addofl_l               [32] mulmoddis_l            [15] sqrpot_l
+  [20] addsub_l               [13] mulmodu_l               [6] subadd_l
+  [18] addu_l                  [1] mulofl_l               [19] subass_l
+  [30] divmod_l                [8] mulu_l                 [33] submodu_l
+  [21] divrem_l               [10] sqrmoddis_l            [17] subneu_l
+  [22] divs5_l                [29] sqrmodmul_l             [3] subu_l
+  [11] divsmall_l             [28] sqrmodneu_l            [31] subufl_l
+  [35] divsub_l               [34] sqrmodpot_l             [5] <cycle 1>

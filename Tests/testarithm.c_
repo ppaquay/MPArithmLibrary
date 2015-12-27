@@ -1,0 +1,419 @@
+/***********************************************************************
+ *                                                                     *
+ *          Test  pour la librairie de fonctions d'arithmétique        *
+ *           élémentaire pour les grands entiers (4096 bits)           *
+ *                                                                     *
+ *                                                                     *
+ *                             Pierre Paquay                           *
+ *                                                                     *
+ ***********************************************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include "arithm.h"
+
+#define MAXTESTLEN BIGINTMAXBIT
+#define RND (ulrand64_l() % (MAXTESTLEN + 1))
+#define RNDDIGIT (ulrand64_l() % (BIGINTMAXDIGIT + 1))
+
+static void verif_l(BIGINT a_l, BIGINT b_l, int line);
+static void addcomm_l(unsigned int nbretest);
+static void addass_l(unsigned int nbretest);
+static void addsub_l(unsigned int nbretest);
+static void addu_l(unsigned int nbretest);
+static void addofl_l(void);
+static void subneu_l(unsigned int nbretest);
+static void subadd_l(unsigned int nbretest);
+static void subass_l(unsigned int nbretest);
+static void subu_l(unsigned int nbretest);
+static void subufl_l(void);
+
+static void verif_l(BIGINT a_l, BIGINT b_l, int line)
+{
+  if (check_l(a_l))
+    {
+      printf("Erreur dans check_l() dans la ligne %d\n", line);
+      printf("check_l() = %d\n", check_l(a_l));
+      printf("a_l = %s\n", bigint2str_l(a_l, 10, 0));
+      abort();
+    }
+  if (equ_l(a_l, b_l) == 0)
+    {
+      printf("Erreur dans la ligne %d\n", line);
+      printf("a_l = %s\n", bigint2str_l(a_l, 10, 0));
+      printf("b_l = %s\n", bigint2str_l(b_l, 10, 0));
+      abort();
+    }
+}
+
+static void addcomm_l(unsigned int nbretest)
+{
+  BIGINT a_l, b_l, c_l, d_l, s1_l, s2_l;
+  BIGINT nul_l = { 0 };
+  int i;
+
+  printf("Fonction addcom_l()...\n");
+
+  setzero_l(a_l);
+  setzero_l(b_l);
+  add_l(a_l, b_l, s1_l);
+  verif_l(a_l, nul_l, __LINE__);
+
+  setzero_l(a_l);
+  setmax_l(b_l);
+  add_l(a_l, b_l, s1_l);
+  add_l(b_l, a_l, s2_l);
+  verif_l(s1_l, b_l, __LINE__);
+  verif_l(s2_l, b_l, __LINE__);
+
+  setzero_l(a_l);
+  for (i = 1; i <= nbretest; i++)
+    {
+      rand_l(b_l, RND);
+      add_l(a_l, b_l, s1_l);
+      add_l(b_l, a_l, s2_l);
+      verif_l(s1_l, b_l, __LINE__);
+      verif_l(s2_l, b_l, __LINE__);
+    }
+
+  for (i = 1; i <= nbretest; i++)
+    {
+      rand_l(a_l, RND);
+      copy_l(b_l, a_l);
+      add_l(a_l, b_l, s1_l);
+      add_l(b_l, a_l, s2_l);
+      verif_l(s1_l, s2_l, __LINE__);
+
+      rand_l(a_l, RND);
+      rand_l(b_l, RND);
+      copy_l(d_l, a_l);
+      add_l(a_l, b_l, a_l);
+      add_l(d_l, b_l, c_l);
+      verif_l(a_l, c_l, __LINE__);
+
+      rand_l(a_l, RND);
+      rand_l(b_l, RND);
+      copy_l(d_l, b_l);
+      add_l(a_l, b_l, b_l);
+      add_l(a_l, d_l, c_l);
+      verif_l(b_l, c_l, __LINE__);
+    }
+
+  for (i = 1; i <= nbretest; i++)
+    {
+      rand_l(a_l, RND);
+      rand_l(b_l, RND);
+      add_l(a_l, b_l, s1_l);
+      add_l(b_l, a_l, s2_l);
+      verif_l(s1_l, s2_l, __LINE__);
+    }
+}
+
+static void addass_l(unsigned int nbretest)
+{
+  BIGINT a_l, b_l, c_l, s1_l, s2_l, s3_l, s4_l;
+  int i;
+
+  printf("Fonction addass_l()...\n");
+
+  for (i = 1; i <= nbretest; i++)
+    {
+      rand_l(a_l, RND);
+      rand_l(b_l, RND);
+      rand_l(c_l, RND);
+      add_l(a_l, b_l, s1_l);
+      add_l(s1_l, c_l, s2_l);
+
+      add_l(b_l, c_l, s3_l);
+      add_l(a_l, s3_l, s4_l);
+
+      verif_l(s2_l, s4_l, __LINE__);
+    }
+}
+
+static void addsub_l(unsigned int nbretest)
+{
+  BIGINT a_l, b_l, s1_l, s2_l, s3_l, s4_l;
+  int i;
+
+  printf("Fonction addsub_l()...\n");
+
+  for (i = 1; i <= nbretest; i++)
+    {
+      rand_l(a_l, RND);
+      rand_l(b_l, RND);
+      add_l(a_l, b_l, s1_l);
+      sub_l(s1_l, a_l, s2_l);
+      sub_l(s1_l, b_l, s3_l);
+      verif_l(s2_l, b_l, __LINE__);
+      verif_l(s3_l, a_l, __LINE__);
+    }
+}
+
+static void addu_l(unsigned int nbretest)
+{
+  BIGINT a_l, b_l, s1_l, s2_l, s3_l, s4_l, u_l;
+  USHORT u;
+  int i;
+
+  printf("Fonction addu_l()...\n");
+
+  rand_l(a_l, RND);
+  u = 0;
+  uadd_l(a_l, u, s1_l);
+  verif_l(s1_l, a_l, __LINE__);
+
+  for (i = 1; i <= nbretest; i++)
+    {
+      rand_l(a_l, RND);
+      copy_l(b_l, a_l);
+      u = usrand64_l();
+      u2bigint_l(u_l, u);
+      uadd_l(a_l, u, s1_l);
+      add_l(b_l, u_l, s2_l);
+      verif_l(s1_l, s2_l, __LINE__);
+    }
+
+  for (i = 1; i <= nbretest; i++)
+    {
+      rand_l(a_l, RND);
+      u = usrand64_l();
+      u2bigint_l(u_l, u);
+      uadd_l(a_l, u, s1_l);
+      add_l(a_l, u_l, s2_l);
+      verif_l(s1_l, s2_l, __LINE__);
+    }
+}
+
+static void addofl_l(void)
+{
+  BIGINT a_l, b_l, s1_l, s2_l, s3_l, s4_l;
+  BIGINT un_l = { 1, 1 }, nul_l = { 0 };
+  int i;
+
+  printf("Fonction addofl_l()...\n");
+  
+  setmax_l(a_l);
+  sub_l(a_l, un_l, b_l);
+  if (add_l(a_l, un_l, s1_l) != BIGINT_OFL)
+    {
+      printf("Erreur dans add_l: OFL non détecté dans la ligne %d\n", __LINE__);
+      abort();
+    }
+  if (equ_l(s1_l, nul_l) == 0)
+    {
+      printf("Erreur dans add_l: réduction mod 2^BIGINTMAXBIT dans la ligne %d\n", __LINE__);
+      printf("s1_l = %s\n", bigint2str_l(s1_l, 10, 0));
+      abort();
+    }
+  if (add_l(a_l, a_l, s2_l) != BIGINT_OFL)
+    {
+      printf("Erreur dans add_l: OFL non détecté dans la ligne %d\n", __LINE__);
+      abort();
+    }
+  if (equ_l(s2_l, b_l) == 0)
+    {
+      printf("Erreur dans add_l: réduction mod 2^BIGINTMAXBIT dans la ligne %d\n", __LINE__);
+      printf("s2_l = %s\n", bigint2str_l(s2_l, 10, 0));
+      abort();
+    }
+}
+
+static void subneu_l(unsigned int nbretest)
+{
+  BIGINT a_l, b_l, c_l, s1_l, s2_l, s3_l, s4_l;
+  BIGINT nul_l = {0 }, un_l = { 1, 1 };
+  int i;
+
+  printf("Fonction subneu_l()...\n");
+
+  setzero_l(a_l);
+  setzero_l(b_l);
+  sub_l(a_l, b_l, s1_l);
+  sub_l(b_l, a_l, s2_l);
+  verif_l(s1_l, nul_l, __LINE__);
+  verif_l(s2_l, nul_l, __LINE__);
+
+  setzero_l(a_l);
+  sub_l(a_l, un_l, s1_l);
+  sub_l(b_l, s1_l, s3_l);
+  verif_l(s3_l, un_l, __LINE__);
+
+  setzero_l(b_l);
+  for (i = 1; i <= nbretest; i++)
+    {
+      rand_l(a_l, RND);
+      sub_l(a_l, b_l, s1_l);
+      verif_l(s1_l, a_l, __LINE__);
+    }
+
+  for (i = 1; i <= nbretest; i++)
+    {
+      rand_l(a_l, RND);
+      sub_l(a_l, a_l, a_l);
+      verif_l(a_l, nul_l, __LINE__);
+      
+      rand_l(a_l, RND);
+      rand_l(b_l, RND);
+      copy_l(c_l, a_l);
+      sub_l(a_l, b_l, a_l);
+      sub_l(c_l, b_l, s1_l);
+      verif_l(a_l, s1_l, __LINE__);
+
+      rand_l(a_l, RND);
+      rand_l(b_l, RND);
+      copy_l(c_l, b_l);
+      sub_l(a_l, b_l, b_l);
+      sub_l(a_l, c_l, s1_l);
+      verif_l(b_l, s1_l, __LINE__);
+    }
+}
+
+static void subadd_l(unsigned int nbretest)
+{
+  BIGINT a_l, b_l, c_l, s1_l, s2_l, s3_l, s4_l;
+  BIGINT nul_l = { 0 }, un_l = { 1, 1 };
+  int i;
+
+  printf("Fonction subadd_l()...\n");
+
+  for (i = 1; i <= nbretest; i++)
+    {
+      rand_l(a_l, RND);
+      rand_l(b_l, RND);
+      if (ge_l(a_l, b_l))
+	{
+	  sub_l(a_l, b_l, s1_l);
+	  add_l(s1_l, b_l, s1_l);
+	  verif_l(s1_l, a_l, __LINE__);
+	}
+    }
+}
+
+static void subass_l(unsigned int nbretest)
+{
+  BIGINT a_l, b_l, c_l, s1_l, s2_l, s3_l, s4_l, s5_l;
+  BIGINT nul_l = { 0 }, un_l = { 1, 1 };
+  int i;
+
+  printf("Fonction subass_l()...\n");
+
+ for (i = 1; i <= nbretest; i++)
+    {
+      rand_l(a_l, RND);
+      rand_l(b_l, RND);
+      rand_l(c_l, RND);
+      add_l(b_l, c_l, s1_l);
+      add_l(s1_l, a_l, s2_l);
+      sub_l(s2_l, c_l, s3_l);
+      sub_l(s3_l, b_l, s4_l);
+      sub_l(s2_l, s1_l, s5_l);
+      verif_l(s4_l, s5_l, __LINE__);
+    }
+}
+
+static void subu_l(unsigned int nbretest)
+{
+  BIGINT a_l, b_l, s1_l, s2_l, s3_l, s4_l, u_l;
+  USHORT u;
+  int i, k;
+
+  printf("Fonction subu_l()...\n");
+
+  rand_l(a_l, RND);
+  u = 0;
+  usub_l(a_l, u, s1_l);
+  verif_l(s1_l, a_l, __LINE__);
+
+  for (i = 1; i <= nbretest; i++)
+    {
+      u = usrand64_l();
+      u2bigint_l(u_l, u);
+      k = RND;
+      if ((numbits_l(u_l) + 1) > k)
+	rand_l(a_l, numbits_l(u_l) + 1);
+      else
+	rand_l(a_l, k);
+      copy_l(b_l, a_l);
+      usub_l(a_l, u, s1_l);
+      sub_l(b_l, u_l, s2_l);
+      verif_l(s1_l, s2_l, __LINE__);
+    }
+
+  for (i = 1; i <= nbretest; i++)
+    {
+      rand_l(a_l, RND);
+      u = usrand64_l();
+      u2bigint_l(u_l, u);
+      usub_l(a_l, u, s1_l);
+      sub_l(a_l, u_l, s2_l);
+      verif_l(s1_l, s2_l, __LINE__);
+    }
+}
+
+static void subufl_l(void)
+{
+  BIGINT a_l, b_l, s1_l, s2_l, s3_l, s4_l;
+  BIGINT un_l = { 1, 1 }, nul_l = { 0 }, deux_l = { 1, 2 };
+  int i;
+
+  printf("Fonction subufl_l()...\n");
+  
+  setmax_l(a_l);
+  if (sub_l(nul_l, un_l, s1_l) != BIGINT_UFL)
+    {
+      printf("Erreur dans sub_l: UFL non détecté dans la ligne %d\n", __LINE__);
+      abort();
+    }
+  if (equ_l(a_l, s1_l) == 0)
+    {
+      printf("Erreur dans sub_l: réduction mod 2^BIGINTMAXBIT dans la ligne %d\n", __LINE__);
+      printf("s1_l = %s\n", bigint2str_l(s1_l, 10, 0));
+      abort();
+    }
+  if (sub_l(un_l, deux_l, s2_l) != BIGINT_UFL)
+    {
+      printf("Erreur dans sub_l: UFL non détecté dans la ligne %d\n", __LINE__);
+      abort();
+    }
+  if (equ_l(s2_l, a_l) == 0)
+    {
+      printf("Erreur dans sub_l: réduction mod 2^BIGINTMAXBIT dans la ligne %d\n", __LINE__);
+      printf("s2_l = %s\n", bigint2str_l(s2_l, 10, 0));
+      abort();
+    }
+  if (sub_l(nul_l, a_l, s3_l) != BIGINT_FL)
+    {
+      printf("Erreur dans sub_l: UFL non détecté dans la ligne %d\n", __LINE__);
+      abort();
+    }
+  if (equ_l(s3_l, un_l) == 0)
+    {
+      printf("Erreur dans sub_l: réduction mod 2^BIGINTMAXBIT dans la ligne %d\n", __LINE__);
+      printf("s2_l = %s\n", bigint2str_l(s2_l, 10, 0));
+      abort();
+    }
+}
+
+
+int main()
+{
+  printf("Module de test %s pour la librairie arithmetique C\n\n", __FILE__);
+
+  ulseed64_l(time(0));
+  addcomm_l(100);
+  addass_l(100);
+  addsub_l(100);
+  addu_l(100);
+  addofl_l();
+  subneu_l(100);
+  subadd_l(100);
+  subass_l(100);
+  subu_l(100);
+  subufl_l();
+
+  printf("\nTous les tests du fichier %s effectues.\n", __FILE__);
+
+  return 0;
+}

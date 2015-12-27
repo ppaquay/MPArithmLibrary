@@ -1,0 +1,138 @@
+TEST DES FONCTIONS C++
+Valeurs initiales
+Le Nombre1 est cree :26828469472465868493581346462
+95bits
+
+Le Nombre2 est cree :315513513513513513512351353
+89bits
+
+Test des fonctions
+Somme effectuee : Nombre1 + Nombre2 = 27143982985979382007093697815
+95bits
+
+Difference effectuee : Nombre1 - Nombre2 = 26512955958952354980068995109
+95bits
+
+Produit effectue : Nombre1 * Nombre2 = 8464744665447744561970676109367800147978215681367463086
+183bits
+
+Carre effectue : Nombre1 * Nombre1 = 719766774235033036100244596462156169177663607240879917444
+189bits
+
+Quotient effectue : Nombre1 / Nombre2 = 85
+7bits
+
+Reste effectue : Nombre1 % Nombre2 = 9820823817219845031481457
+84bits
+
+Nombre1 =? Nombre2 :0
+Nombre1 =? Nombre1 :1
+Nombre1 <? Nombre2 :0
+Nombre1 >? Nombre2 :1
+Nombre1 <=? Nombre2 :0
+Nombre1 >=? Nombre2 :1
+AND effectue : Nombre1 & Nombre1 = 6025819402436131397051928
+83bits
+
+OR effectue : Nombre1 | Nombre1 = 27137957166576945875696645887
+95bits
+
+XOR effectue : Nombre1 ^ Nombre1 = 27131931347174509744299593959
+95bits
+
+Test de la MORT(1) : Mort1 = (Nombre1+(Nombre1*Nombre2-Nombre2)+Nombre2)/Nombre1
+Mort1 = 315513513513513513512351354
+89bits
+
+Test de la MORT(2) : Mort2 = ((Nombre1*Nombre1-Nombre2)*Nombre2+Nombre1)%(Nombre1*Nombre2)
+Mort2 = 8365195888238102487464470119085803586842914088027878939
+183bits
+
+Test de la MORT(3) : Mort3 = ((((Nombre1*35657)*Nombre2)/3+2344)*4)%(5477*Nombre1+41)
+Mort3 = 30919305959210758786069773265202
+105bits
+
+TEST DES FONCTIONS AMIES D'ARITHMETIQUE MODULAIRE
+
+Le modulo utilise est m = 362563634626162452343423433
+89bits
+
+Nombre1 + Nombre2 mod m = 314274023643360533680363773
+89bits
+
+Nombre1 - Nombre2 mod m = 45810631242495958999084500
+86bits
+
+Nombre2 - Nombre1 mod m = 316753003383666493344338933
+89bits
+
+Nombre1 * Nombre2 mod m = 284492849051280912142198221
+88bits
+
+Nombre2^2 mod m = 76446509633985781840531868
+86bits
+
+Nombre1^Nombre2 mod m = 177480770084863382265084861
+88bits
+
+On utilise le nombre u = 15463
+Nombre1^u mod m = 264533721706591020077393771
+88bits
+
+u^Nombre2 mod m = 122943331825002908041874642
+87bits
+
+Nombre1^(2^u) mod m = 102726852409790987192881990
+87bits
+
+Nombre1 =? Nombre2 mod m :0
+On utilise le nombre n = 104417087282464633295073961124
+97bits
+
+Nombre1 =? n mod m :1
+TEST DES FONCTIONS AMIES DE THEORIE DES NOMBRES
+
+Nombre de bits significatifs de Nombre1 : 95
+Nombre1 pair ? : 1
+Nombre2 pair ? : 0
+Nombre1 premier ? : 0
+Essai avec le nombre premier p = 455068094450949719
+59bits
+
+p premier ? : 1
+Nombre1 carre ? : 0
+0bits
+
+Nombre1^2 carre ? : 26828469472465868493581346462
+95bits
+
+PGCD(Nombre1, Nombre2) = 1
+1bits
+
+PPCM(Nombre1, Nombre2) = 8464744665447744561970676109367800147978215681367463086
+183bits
+
+a^{-1} mod m = 319168449662915259835788404
+89bits
+
+b^{-1} mod m = 116625776322562036852755417
+87bits
+
+Jacobi(Nombre1, Nombre2) = -1
+On utilise c1 = 253266981455048980
+58bits
+
+Jacobi(c1, p) = 1
+Sqr[c1] mod p = 229298048189685919
+58bits
+
+On utilise le nombre premier q = 69599263259131
+46bits
+
+On utilise c2 = 10935620062296318155979063929736
+104bits
+
+Jacobi(c2, pq) = 1
+Sqr[c2] mod pq = 12995201735220397403129221683095
+104bits
+

@@ -1,0 +1,14 @@
+cd ../librairiesC
+g++ -m32 -c -DSECURE -DDEBUGSEC -O2 -Wall -ansi libarithm-0.9.3.c
+cp libarithm-0.9.3.o ../librairiesCPP/libarithm-0.9.3.o
+cd ../librairiesCPP
+g++ -m32 -c -O2 -Wall -ansi -I../librairiesC libarithmcpp-0.9.1.cpp
+ar rus libarithm++.a libarithm-0.9.3.o libarithmcpp-0.9.1.o
+cd ../TestCPPFinal
+echo Compilation et archivage de la librairie arithmétique en C++ OK
+
+
+# Test des fonctions arithmétiques en C++
+g++ -m32 -O2 -Wall -ansi -o testarithmcpp -I../librairiesC testarithmcpp.cpp -I../librairiesCPP -L../librairiesCPP -larithm++
+echo Compilation de testarithmcpp Final OK
+# testarithmcpp

@@ -1,0 +1,734 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 58.01   1182.89  1182.89                             div_l
+ 11.08   1408.91   226.02                             sqr
+  9.63   1605.27   196.36                             mul
+  7.04   1748.75   143.48                             sqrmon_l
+  2.92   1808.33    59.58                             copy_l
+  2.20   1853.16    44.83                             lsdptr_l
+  1.84   1890.68    37.52                             digits_l
+  1.74   1926.06    35.38                             purgevars_l
+  1.25   1951.63    25.57                             add
+  1.06   1973.29    21.66                             mulmon_l
+  0.86   1990.89    17.60                             msdptr_l
+  0.61   2003.37    12.48                             rmldzeros_l
+  0.32   2009.80     6.43                             mul_l
+  0.29   2015.64     5.84                             add_l
+  0.20   2019.68     4.04                             setdigits_l
+  0.18   2023.39     3.71                             uadd_l
+  0.16   2026.72     3.33                             rand64_l
+  0.16   2029.89     3.17                             u2bigint_l
+  0.15   2032.95     3.06                             eqz_l
+  0.09   2034.80     1.85                             usrand64_l
+  0.07   2036.23     1.43                             sub
+  0.04   2037.00     0.77                             rand_l
+  0.02   2037.46     0.46                             comp_l
+  0.02   2037.79     0.33                             addmod_l
+  0.01   2038.05     0.26                             equ_l
+  0.01   2038.18     0.13                             decdigits_l
+  0.00   2038.28     0.10                             mod_l
+  0.00   2038.37     0.09        1    90.00    90.22  divmod_l
+  0.00   2038.44     0.07                             ge_l
+  0.00   2038.51     0.07                             udiv_l
+  0.00   2038.57     0.06                             umod_l
+  0.00   2038.62     0.05                             expmodk_l
+  0.00   2038.67     0.05                             mulmod_l
+  0.00   2038.72     0.05                             sqrmod_l
+  0.00   2038.74     0.02        1    20.00    20.33  expmodmonsqr_l
+  0.00   2038.76     0.02        1    20.00    20.45  expmodsqr_l
+  0.00   2038.78     0.02        1    20.00    20.11  muladd_l
+  0.00   2038.80     0.02        1    20.00    20.11  mulmodadd_l
+  0.00   2038.82     0.02                             check_l
+  0.00   2038.84     0.02                             expmodmonk_l
+  0.00   2038.86     0.02                             setmax_l
+  0.00   2038.88     0.02                             sub_l
+  0.00   2038.89     0.01   897896     0.00     0.00  verif_l
+  0.00   2038.90     0.01        1    10.00    10.33  divrem_l
+  0.00   2038.91     0.01        1    10.00    10.89  mulcomm_l
+  0.00   2038.92     0.01        1    10.00    10.78  mulmodcom_l
+  0.00   2038.93     0.01        1    10.00    10.11  submodass_l
+  0.00   2038.94     0.01        1    10.00    10.45  subneu_l
+  0.00   2038.95     0.01                             eq1_l
+  0.00   2038.96     0.01                             expmod2k_l
+  0.00   2038.97     0.01                             iseven_l
+  0.00   2038.98     0.01                             numbits_l
+  0.00   2038.99     0.01                             submod_l
+  0.00   2039.00     0.01                             ulrand64_l
+  0.00   2039.01     0.01                             umul_l
+  0.00   2039.02     0.01                             umulmod_l
+  0.00   2039.03     0.01                             wexpmod_l
+  0.00   2039.03     0.00        1     0.00     0.11  addass_l
+  0.00   2039.03     0.00        1     0.00     0.67  addcomm_l
+  0.00   2039.03     0.00        1     0.00     0.11  addmodass_l
+  0.00   2039.03     0.00        1     0.00     0.45  addmodcom_l
+  0.00   2039.03     0.00        1     0.00     0.22  addmodsub_l
+  0.00   2039.03     0.00        1     0.00     0.22  addmodu_l
+  0.00   2039.03     0.00        1     0.00     0.00  addofl_l
+  0.00   2039.03     0.00        1     0.00     0.22  addsub_l
+  0.00   2039.03     0.00        1     0.00     0.02  addu_l
+  0.00   2039.03     0.00        1     0.00     0.22  divneu_l
+  0.00   2039.03     0.00        1     0.00     0.00  divs5_l
+  0.00   2039.03     0.00        1     0.00     0.45  divsmall_l
+  0.00   2039.03     0.00        1     0.00     0.22  divsub_l
+  0.00   2039.03     0.00        1     0.00     0.00  expmodacc_l
+  0.00   2039.03     0.00        1     0.00     0.00  expmodmonacc_l
+  0.00   2039.03     0.00        1     0.00     0.00  expmodmonprop2_l
+  0.00   2039.03     0.00        1     0.00     0.00  expmodmonprop_l
+  0.00   2039.03     0.00        1     0.00     0.00  expmodmontriv_l
+  0.00   2039.03     0.00        1     0.00     0.00  expmodprop2_l
+  0.00   2039.03     0.00        1     0.00     0.00  expmodprop_l
+  0.00   2039.03     0.00        1     0.00     0.00  expmodtriv_l
+  0.00   2039.03     0.00        1     0.00     0.11  mulass_l
+  0.00   2039.03     0.00        1     0.00     0.11  muldis_l
+  0.00   2039.03     0.00        1     0.00     0.11  mulmodass_l
+  0.00   2039.03     0.00        1     0.00     0.11  mulmoddis_l
+  0.00   2039.03     0.00        1     0.00     0.22  mulmodu_l
+  0.00   2039.03     0.00        1     0.00     0.00  mulofl_l
+  0.00   2039.03     0.00        1     0.00     0.22  mulu_l
+  0.00   2039.03     0.00        1     0.00     0.11  sqrbin_l
+  0.00   2039.03     0.00        1     0.00     0.11  sqrdist_l
+  0.00   2039.03     0.00        1     0.00     0.11  sqrmodbin_l
+  0.00   2039.03     0.00        1     0.00     0.11  sqrmoddis_l
+  0.00   2039.03     0.00        1     0.00     0.22  sqrmodmul_l
+  0.00   2039.03     0.00        1     0.00     0.00  sqrmodneu_l
+  0.00   2039.03     0.00        1     0.00     0.22  sqrmodpot_l
+  0.00   2039.03     0.00        1     0.00     0.11  sqrmul_l
+  0.00   2039.03     0.00        1     0.00     0.00  sqrneu_l
+  0.00   2039.03     0.00        1     0.00     0.00  sqrofl_l
+  0.00   2039.03     0.00        1     0.00     0.11  sqrpot_l
+  0.00   2039.03     0.00        1     0.00     0.06  subadd_l
+  0.00   2039.03     0.00        1     0.00     0.11  subass_l
+  0.00   2039.03     0.00        1     0.00     0.45  submodadd_l
+  0.00   2039.03     0.00        1     0.00     0.11  submodneu_l
+  0.00   2039.03     0.00        1     0.00     0.33  submodu_l
+  0.00   2039.03     0.00        1     0.00     0.22  subu_l
+  0.00   2039.03     0.00        1     0.00     0.00  subufl_l
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+ 
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this 
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 4 byte(s) for 0.00% of 2039.03 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     58.0 1182.89    0.00                 div_l [1]
+-----------------------------------------------
+                                                 <spontaneous>
+[2]     11.1  226.02    0.00                 sqr [2]
+-----------------------------------------------
+                                                 <spontaneous>
+[3]      9.6  196.36    0.00                 mul [3]
+-----------------------------------------------
+                                                 <spontaneous>
+[4]      7.0  143.48    0.00                 sqrmon_l [4]
+-----------------------------------------------
+                                                 <spontaneous>
+[5]      2.9   59.58    0.00                 copy_l [5]
+-----------------------------------------------
+                                                 <spontaneous>
+[6]      2.2   44.83    0.00                 lsdptr_l [6]
+-----------------------------------------------
+                                                 <spontaneous>
+[7]      1.8   37.52    0.00                 digits_l [7]
+-----------------------------------------------
+                                                 <spontaneous>
+[8]      1.7   35.38    0.00                 purgevars_l [8]
+-----------------------------------------------
+                                                 <spontaneous>
+[9]      1.3   25.57    0.00                 add [9]
+-----------------------------------------------
+                                                 <spontaneous>
+[10]     1.1   21.66    0.00                 mulmon_l [10]
+-----------------------------------------------
+                                                 <spontaneous>
+[11]     0.9   17.60    0.00                 msdptr_l [11]
+-----------------------------------------------
+                                                 <spontaneous>
+[12]     0.6   12.48    0.00                 rmldzeros_l [12]
+-----------------------------------------------
+                                                 <spontaneous>
+[13]     0.3    6.43    0.00                 mul_l [13]
+-----------------------------------------------
+                                                 <spontaneous>
+[14]     0.3    5.84    0.00                 add_l [14]
+-----------------------------------------------
+                                                 <spontaneous>
+[15]     0.2    4.04    0.00                 setdigits_l [15]
+-----------------------------------------------
+                                                 <spontaneous>
+[16]     0.2    3.71    0.00                 uadd_l [16]
+-----------------------------------------------
+                                                 <spontaneous>
+[17]     0.2    3.33    0.00                 rand64_l [17]
+-----------------------------------------------
+                                                 <spontaneous>
+[18]     0.2    3.17    0.00                 u2bigint_l [18]
+-----------------------------------------------
+                                                 <spontaneous>
+[19]     0.2    3.06    0.00                 eqz_l [19]
+-----------------------------------------------
+                                                 <spontaneous>
+[20]     0.1    1.85    0.00                 usrand64_l [20]
+-----------------------------------------------
+                                                 <spontaneous>
+[21]     0.1    1.43    0.00                 sub [21]
+-----------------------------------------------
+                                                 <spontaneous>
+[22]     0.0    0.77    0.00                 rand_l [22]
+-----------------------------------------------
+                                                 <spontaneous>
+[23]     0.0    0.46    0.00                 comp_l [23]
+-----------------------------------------------
+                                                 <spontaneous>
+[24]     0.0    0.33    0.00                 addmod_l [24]
+-----------------------------------------------
+                                                 <spontaneous>
+[25]     0.0    0.26    0.00                 equ_l [25]
+-----------------------------------------------
+                                                 <spontaneous>
+[26]     0.0    0.00    0.23                 main [26]
+                0.09    0.00       1/1           divmod_l [29]
+                0.02    0.00       1/1           expmodsqr_l [36]
+                0.02    0.00       1/1           expmodmonsqr_l [37]
+                0.02    0.00       1/1           mulmodadd_l [38]
+                0.02    0.00       1/1           muladd_l [39]
+                0.01    0.00       1/1           mulcomm_l [44]
+                0.01    0.00       1/1           mulmodcom_l [45]
+                0.01    0.00       1/1           subneu_l [46]
+                0.01    0.00       1/1           divrem_l [47]
+                0.01    0.00       1/1           submodass_l [48]
+                0.00    0.00       1/1           addcomm_l [59]
+                0.00    0.00       1/1           addmodcom_l [60]
+                0.00    0.00       1/1           submodadd_l [61]
+                0.00    0.00       1/1           divsmall_l [62]
+                0.00    0.00       1/1           submodu_l [63]
+                0.00    0.00       1/1           divneu_l [65]
+                0.00    0.00       1/1           addmodsub_l [64]
+                0.00    0.00       1/1           subu_l [69]
+                0.00    0.00       1/1           mulu_l [68]
+                0.00    0.00       1/1           addmodu_l [66]
+                0.00    0.00       1/1           mulmodu_l [67]
+                0.00    0.00       1/1           addsub_l [70]
+                0.00    0.00       1/1           divsub_l [71]
+                0.00    0.00       1/1           sqrmodmul_l [72]
+                0.00    0.00       1/1           sqrmodpot_l [73]
+                0.00    0.00       1/1           submodneu_l [74]
+                0.00    0.00       1/1           sqrmul_l [75]
+                0.00    0.00       1/1           addass_l [76]
+                0.00    0.00       1/1           subass_l [87]
+                0.00    0.00       1/1           mulass_l [78]
+                0.00    0.00       1/1           muldis_l [79]
+                0.00    0.00       1/1           sqrpot_l [86]
+                0.00    0.00       1/1           sqrbin_l [82]
+                0.00    0.00       1/1           sqrdist_l [83]
+                0.00    0.00       1/1           addmodass_l [77]
+                0.00    0.00       1/1           mulmodass_l [80]
+                0.00    0.00       1/1           mulmoddis_l [81]
+                0.00    0.00       1/1           sqrmodbin_l [84]
+                0.00    0.00       1/1           sqrmoddis_l [85]
+                0.00    0.00       1/1           subadd_l [88]
+                0.00    0.00       1/1           addu_l [89]
+                0.00    0.00       1/1           expmodprop_l [91]
+                0.00    0.00       1/1           expmodprop2_l [90]
+                0.00    0.00       1/1           expmodmonprop_l [93]
+                0.00    0.00       1/1           expmodmonprop2_l [92]
+                0.00    0.00       1/1           expmodtriv_l [94]
+                0.00    0.00       1/1           expmodmontriv_l [95]
+                0.00    0.00       1/1           divs5_l [96]
+                0.00    0.00       1/1           sqrmodneu_l [98]
+                0.00    0.00       1/1           expmodacc_l [97]
+                0.00    0.00       1/1           expmodmonacc_l [99]
+                0.00    0.00       1/1           sqrneu_l [100]
+                0.00    0.00       1/1           addofl_l [101]
+                0.00    0.00       1/1           subufl_l [104]
+                0.00    0.00       1/1           mulofl_l [102]
+                0.00    0.00       1/1           sqrofl_l [103]
+-----------------------------------------------
+                                                 <spontaneous>
+[27]     0.0    0.13    0.00                 decdigits_l [27]
+-----------------------------------------------
+                                                 <spontaneous>
+[28]     0.0    0.10    0.00                 mod_l [28]
+-----------------------------------------------
+                0.09    0.00       1/1           main [26]
+[29]     0.0    0.09    0.00       1         divmod_l [29]
+                0.00    0.00   20004/897896      verif_l [49]
+-----------------------------------------------
+                                                 <spontaneous>
+[30]     0.0    0.07    0.00                 ge_l [30]
+-----------------------------------------------
+                                                 <spontaneous>
+[31]     0.0    0.07    0.00                 udiv_l [31]
+-----------------------------------------------
+                                                 <spontaneous>
+[32]     0.0    0.06    0.00                 umod_l [32]
+-----------------------------------------------
+                                                 <spontaneous>
+[33]     0.0    0.05    0.00                 expmodk_l [33]
+-----------------------------------------------
+                                                 <spontaneous>
+[34]     0.0    0.05    0.00                 mulmod_l [34]
+-----------------------------------------------
+                                                 <spontaneous>
+[35]     0.0    0.05    0.00                 sqrmod_l [35]
+-----------------------------------------------
+                0.02    0.00       1/1           main [26]
+[36]     0.0    0.02    0.00       1         expmodsqr_l [36]
+                0.00    0.00   40000/897896      verif_l [49]
+-----------------------------------------------
+                0.02    0.00       1/1           main [26]
+[37]     0.0    0.02    0.00       1         expmodmonsqr_l [37]
+                0.00    0.00   30000/897896      verif_l [49]
+-----------------------------------------------
+                0.02    0.00       1/1           main [26]
+[38]     0.0    0.02    0.00       1         mulmodadd_l [38]
+                0.00    0.00   10001/897896      verif_l [49]
+-----------------------------------------------
+                0.02    0.00       1/1           main [26]
+[39]     0.0    0.02    0.00       1         muladd_l [39]
+                0.00    0.00   10000/897896      verif_l [49]
+-----------------------------------------------
+                                                 <spontaneous>
+[40]     0.0    0.02    0.00                 check_l [40]
+-----------------------------------------------
+                                                 <spontaneous>
+[41]     0.0    0.02    0.00                 expmodmonk_l [41]
+-----------------------------------------------
+                                                 <spontaneous>
+[42]     0.0    0.02    0.00                 setmax_l [42]
+-----------------------------------------------
+                                                 <spontaneous>
+[43]     0.0    0.02    0.00                 sub_l [43]
+-----------------------------------------------
+                0.01    0.00       1/1           main [26]
+[44]     0.0    0.01    0.00       1         mulcomm_l [44]
+                0.00    0.00   80002/897896      verif_l [49]
+-----------------------------------------------
+                0.01    0.00       1/1           main [26]
+[45]     0.0    0.01    0.00       1         mulmodcom_l [45]
+                0.00    0.00   70005/897896      verif_l [49]
+-----------------------------------------------
+                0.01    0.00       1/1           main [26]
+[46]     0.0    0.01    0.00       1         subneu_l [46]
+                0.00    0.00   40003/897896      verif_l [49]
+-----------------------------------------------
+                0.01    0.00       1/1           main [26]
+[47]     0.0    0.01    0.00       1         divrem_l [47]
+                0.00    0.00   30002/897896      verif_l [49]
+-----------------------------------------------
+                0.01    0.00       1/1           main [26]
+[48]     0.0    0.01    0.00       1         submodass_l [48]
+                0.00    0.00   10000/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       2/897896      sqrneu_l [100]
+                0.00    0.00       3/897896      expmodmonacc_l [99]
+                0.00    0.00       4/897896      divs5_l [96]
+                0.00    0.00       4/897896      sqrmodneu_l [98]
+                0.00    0.00       4/897896      expmodacc_l [97]
+                0.00    0.00      28/897896      expmodmontriv_l [95]
+                0.00    0.00      39/897896      expmodtriv_l [94]
+                0.00    0.00     151/897896      expmodmonprop_l [93]
+                0.00    0.00     151/897896      expmodmonprop2_l [92]
+                0.00    0.00     201/897896      expmodprop_l [91]
+                0.00    0.00     201/897896      expmodprop2_l [90]
+                0.00    0.00    2001/897896      addu_l [89]
+                0.00    0.00    5069/897896      subadd_l [88]
+                0.00    0.00   10000/897896      addass_l [76]
+                0.00    0.00   10000/897896      subass_l [87]
+                0.00    0.00   10000/897896      muladd_l [39]
+                0.00    0.00   10000/897896      mulass_l [78]
+                0.00    0.00   10000/897896      muldis_l [79]
+                0.00    0.00   10000/897896      sqrpot_l [86]
+                0.00    0.00   10000/897896      sqrbin_l [82]
+                0.00    0.00   10000/897896      sqrdist_l [83]
+                0.00    0.00   10000/897896      addmodass_l [77]
+                0.00    0.00   10000/897896      submodass_l [48]
+                0.00    0.00   10000/897896      mulmodass_l [80]
+                0.00    0.00   10000/897896      mulmoddis_l [81]
+                0.00    0.00   10000/897896      sqrmodbin_l [84]
+                0.00    0.00   10000/897896      sqrmoddis_l [85]
+                0.00    0.00   10001/897896      sqrmul_l [75]
+                0.00    0.00   10001/897896      mulmodadd_l [38]
+                0.00    0.00   10004/897896      submodneu_l [74]
+                0.00    0.00   20000/897896      addsub_l [70]
+                0.00    0.00   20000/897896      divsub_l [71]
+                0.00    0.00   20000/897896      sqrmodmul_l [72]
+                0.00    0.00   20000/897896      sqrmodpot_l [73]
+                0.00    0.00   20001/897896      subu_l [69]
+                0.00    0.00   20001/897896      mulu_l [68]
+                0.00    0.00   20001/897896      addmodu_l [66]
+                0.00    0.00   20001/897896      mulmodu_l [67]
+                0.00    0.00   20002/897896      divneu_l [65]
+                0.00    0.00   20002/897896      addmodsub_l [64]
+                0.00    0.00   20004/897896      divmod_l [29]
+                0.00    0.00   30000/897896      expmodmonsqr_l [37]
+                0.00    0.00   30001/897896      submodu_l [63]
+                0.00    0.00   30002/897896      divrem_l [47]
+                0.00    0.00   40000/897896      divsmall_l [62]
+                0.00    0.00   40000/897896      expmodsqr_l [36]
+                0.00    0.00   40001/897896      submodadd_l [61]
+                0.00    0.00   40003/897896      subneu_l [46]
+                0.00    0.00   40003/897896      addmodcom_l [60]
+                0.00    0.00   60003/897896      addcomm_l [59]
+                0.00    0.00   70005/897896      mulmodcom_l [45]
+                0.00    0.00   80002/897896      mulcomm_l [44]
+[49]     0.0    0.01    0.00  897896         verif_l [49]
+-----------------------------------------------
+                                                 <spontaneous>
+[50]     0.0    0.01    0.00                 eq1_l [50]
+-----------------------------------------------
+                                                 <spontaneous>
+[51]     0.0    0.01    0.00                 expmod2k_l [51]
+-----------------------------------------------
+                                                 <spontaneous>
+[52]     0.0    0.01    0.00                 iseven_l [52]
+-----------------------------------------------
+                                                 <spontaneous>
+[53]     0.0    0.01    0.00                 numbits_l [53]
+-----------------------------------------------
+                                                 <spontaneous>
+[54]     0.0    0.01    0.00                 submod_l [54]
+-----------------------------------------------
+                                                 <spontaneous>
+[55]     0.0    0.01    0.00                 ulrand64_l [55]
+-----------------------------------------------
+                                                 <spontaneous>
+[56]     0.0    0.01    0.00                 umul_l [56]
+-----------------------------------------------
+                                                 <spontaneous>
+[57]     0.0    0.01    0.00                 umulmod_l [57]
+-----------------------------------------------
+                                                 <spontaneous>
+[58]     0.0    0.01    0.00                 wexpmod_l [58]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[59]     0.0    0.00    0.00       1         addcomm_l [59]
+                0.00    0.00   60003/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[60]     0.0    0.00    0.00       1         addmodcom_l [60]
+                0.00    0.00   40003/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[61]     0.0    0.00    0.00       1         submodadd_l [61]
+                0.00    0.00   40001/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[62]     0.0    0.00    0.00       1         divsmall_l [62]
+                0.00    0.00   40000/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[63]     0.0    0.00    0.00       1         submodu_l [63]
+                0.00    0.00   30001/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[64]     0.0    0.00    0.00       1         addmodsub_l [64]
+                0.00    0.00   20002/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[65]     0.0    0.00    0.00       1         divneu_l [65]
+                0.00    0.00   20002/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[66]     0.0    0.00    0.00       1         addmodu_l [66]
+                0.00    0.00   20001/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[67]     0.0    0.00    0.00       1         mulmodu_l [67]
+                0.00    0.00   20001/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[68]     0.0    0.00    0.00       1         mulu_l [68]
+                0.00    0.00   20001/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[69]     0.0    0.00    0.00       1         subu_l [69]
+                0.00    0.00   20001/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[70]     0.0    0.00    0.00       1         addsub_l [70]
+                0.00    0.00   20000/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[71]     0.0    0.00    0.00       1         divsub_l [71]
+                0.00    0.00   20000/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[72]     0.0    0.00    0.00       1         sqrmodmul_l [72]
+                0.00    0.00   20000/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[73]     0.0    0.00    0.00       1         sqrmodpot_l [73]
+                0.00    0.00   20000/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[74]     0.0    0.00    0.00       1         submodneu_l [74]
+                0.00    0.00   10004/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[75]     0.0    0.00    0.00       1         sqrmul_l [75]
+                0.00    0.00   10001/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[76]     0.0    0.00    0.00       1         addass_l [76]
+                0.00    0.00   10000/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[77]     0.0    0.00    0.00       1         addmodass_l [77]
+                0.00    0.00   10000/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[78]     0.0    0.00    0.00       1         mulass_l [78]
+                0.00    0.00   10000/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[79]     0.0    0.00    0.00       1         muldis_l [79]
+                0.00    0.00   10000/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[80]     0.0    0.00    0.00       1         mulmodass_l [80]
+                0.00    0.00   10000/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[81]     0.0    0.00    0.00       1         mulmoddis_l [81]
+                0.00    0.00   10000/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[82]     0.0    0.00    0.00       1         sqrbin_l [82]
+                0.00    0.00   10000/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[83]     0.0    0.00    0.00       1         sqrdist_l [83]
+                0.00    0.00   10000/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[84]     0.0    0.00    0.00       1         sqrmodbin_l [84]
+                0.00    0.00   10000/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[85]     0.0    0.00    0.00       1         sqrmoddis_l [85]
+                0.00    0.00   10000/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[86]     0.0    0.00    0.00       1         sqrpot_l [86]
+                0.00    0.00   10000/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[87]     0.0    0.00    0.00       1         subass_l [87]
+                0.00    0.00   10000/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[88]     0.0    0.00    0.00       1         subadd_l [88]
+                0.00    0.00    5069/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[89]     0.0    0.00    0.00       1         addu_l [89]
+                0.00    0.00    2001/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[90]     0.0    0.00    0.00       1         expmodprop2_l [90]
+                0.00    0.00     201/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[91]     0.0    0.00    0.00       1         expmodprop_l [91]
+                0.00    0.00     201/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[92]     0.0    0.00    0.00       1         expmodmonprop2_l [92]
+                0.00    0.00     151/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[93]     0.0    0.00    0.00       1         expmodmonprop_l [93]
+                0.00    0.00     151/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[94]     0.0    0.00    0.00       1         expmodtriv_l [94]
+                0.00    0.00      39/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[95]     0.0    0.00    0.00       1         expmodmontriv_l [95]
+                0.00    0.00      28/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[96]     0.0    0.00    0.00       1         divs5_l [96]
+                0.00    0.00       4/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[97]     0.0    0.00    0.00       1         expmodacc_l [97]
+                0.00    0.00       4/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[98]     0.0    0.00    0.00       1         sqrmodneu_l [98]
+                0.00    0.00       4/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[99]     0.0    0.00    0.00       1         expmodmonacc_l [99]
+                0.00    0.00       3/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[100]    0.0    0.00    0.00       1         sqrneu_l [100]
+                0.00    0.00       2/897896      verif_l [49]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[101]    0.0    0.00    0.00       1         addofl_l [101]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[102]    0.0    0.00    0.00       1         mulofl_l [102]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[103]    0.0    0.00    0.00       1         sqrofl_l [103]
+-----------------------------------------------
+                0.00    0.00       1/1           main [26]
+[104]    0.0    0.00    0.00       1         subufl_l [104]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+
+Index by function name
+
+   [9] add                    [95] expmodmontriv_l (testarithmc.c) [35] sqrmod_l
+  [14] add_l                  [90] expmodprop2_l (testarithmc.c) [84] sqrmodbin_l (testarithmc.c)
+  [76] addass_l (testarithmc.c) [91] expmodprop_l (testarithmc.c) [85] sqrmoddis_l (testarithmc.c)
+  [59] addcomm_l (testarithmc.c) [36] expmodsqr_l (testarithmc.c) [72] sqrmodmul_l (testarithmc.c)
+  [24] addmod_l               [94] expmodtriv_l (testarithmc.c) [98] sqrmodneu_l (testarithmc.c)
+  [77] addmodass_l (testarithmc.c) [30] ge_l              [73] sqrmodpot_l (testarithmc.c)
+  [60] addmodcom_l (testarithmc.c) [52] iseven_l           [4] sqrmon_l
+  [64] addmodsub_l (testarithmc.c) [6] lsdptr_l           [75] sqrmul_l (testarithmc.c)
+  [66] addmodu_l (testarithmc.c) [28] mod_l              [100] sqrneu_l (testarithmc.c)
+ [101] addofl_l (testarithmc.c) [11] msdptr_l            [103] sqrofl_l (testarithmc.c)
+  [70] addsub_l (testarithmc.c) [3] mul                   [86] sqrpot_l (testarithmc.c)
+  [89] addu_l (testarithmc.c) [13] mul_l                  [21] sub
+  [40] check_l                [39] muladd_l (testarithmc.c) [43] sub_l
+  [23] comp_l                 [78] mulass_l (testarithmc.c) [88] subadd_l (testarithmc.c)
+   [5] copy_l                 [44] mulcomm_l (testarithmc.c) [87] subass_l (testarithmc.c)
+  [27] decdigits_l            [79] muldis_l (testarithmc.c) [54] submod_l
+   [7] digits_l               [34] mulmod_l               [61] submodadd_l (testarithmc.c)
+   [1] div_l                  [38] mulmodadd_l (testarithmc.c) [48] submodass_l (testarithmc.c)
+  [29] divmod_l (testarithmc.c) [80] mulmodass_l (testarithmc.c) [74] submodneu_l (testarithmc.c)
+  [65] divneu_l (testarithmc.c) [45] mulmodcom_l (testarithmc.c) [63] submodu_l (testarithmc.c)
+  [47] divrem_l (testarithmc.c) [81] mulmoddis_l (testarithmc.c) [46] subneu_l (testarithmc.c)
+  [96] divs5_l (testarithmc.c) [67] mulmodu_l (testarithmc.c) [69] subu_l (testarithmc.c)
+  [62] divsmall_l (testarithmc.c) [10] mulmon_l          [104] subufl_l (testarithmc.c)
+  [71] divsub_l (testarithmc.c) [102] mulofl_l (testarithmc.c) [18] u2bigint_l
+  [50] eq1_l                  [68] mulu_l (testarithmc.c) [16] uadd_l
+  [25] equ_l                  [53] numbits_l              [31] udiv_l
+  [19] eqz_l                   [8] purgevars_l            [55] ulrand64_l
+  [51] expmod2k_l             [17] rand64_l               [32] umod_l
+  [97] expmodacc_l (testarithmc.c) [22] rand_l            [56] umul_l
+  [33] expmodk_l              [12] rmldzeros_l            [57] umulmod_l
+  [99] expmodmonacc_l (testarithmc.c) [15] setdigits_l    [20] usrand64_l
+  [41] expmodmonk_l           [42] setmax_l               [49] verif_l (testarithmc.c)
+  [92] expmodmonprop2_l (testarithmc.c) [2] sqr           [58] wexpmod_l
+  [93] expmodmonprop_l (testarithmc.c) [82] sqrbin_l (testarithmc.c)
+  [37] expmodmonsqr_l (testarithmc.c) [83] sqrdist_l (testarithmc.c)

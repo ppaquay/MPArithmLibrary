@@ -1,0 +1,47 @@
+/***********************************************************************
+ *                                                                     *
+ *     Header pour la librairie des fonctions de cryptage Rijndael     *
+ *      (largement inspiré de l'implémentation de Rijmen-Barreto)      *
+ *                                                                     *
+ *                             Pierre Paquay                           *
+ *                                                                     *
+ ***********************************************************************/
+
+
+#ifndef libRijndael_H
+#define libRijndael_H
+
+#include <stdlib.h>
+
+/* Définition des constantes utiles */
+
+#define MAXNB 8
+#define MAXNK 8
+#define MAXNR 14
+
+/* Définition des types utiles pour l'algorithme */
+
+typedef unsigned char word8;
+typedef unsigned short word16;
+#ifdef ARCH32
+typedef unsigned long word32;
+#endif
+#ifdef ARCH64
+typedef unsigned int word32;
+#endif
+
+/* Prototypes des fonctions Rijndael */
+
+extern int RijndaelKeyExpansion(word8 [4][MAXNK], int, int, word32 *);
+/* Fonction qui détermine les roundkeys, arg1 est la clé, arg2 le nombre de bits de le clé, arg3 le nombre de bits du bloc, remplit rk (roundkeys successives), renvoie 0 si tout s'est bien passé et -2 ou -3 sinon */
+extern int RijndaelEncrypt(word8 [4][MAXNB], int, int, word32 *);
+/* Fonction de cryptage, arg1 est le texte clair initial et au final le texte crypté, arg2 le nombre de bits de la clé, arg3 le nombre de bits du bloc, arg4 est l'ensemble des roundkeys */
+extern int RijndaelDecrypt(word8 **, int, int, word32 *);
+/* Fonction de cryptage, arg1 est le texte crypté initial et au final le texte clair, arg2 le nombre de bits de la clé, arg3 le nombre de bits du bloc, arg4 est l'ensemble des roundkeys */
+
+
+
+
+#endif
+
+/* Fin de rijndael.h */

@@ -1,0 +1,649 @@
+/***********************************************************************
+ *                                                                     *
+ *               Test  pour la librairie de fonctions binaires         *
+ *                pour les grands entiers (4096  et 8192bits)          *
+ *                                                                     *
+ *                                                                     *
+ *                             Pierre Paquay                           *
+ *                                                                     *
+ ***********************************************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include "libmparithm.h"
+
+#define MAXTESTLEN BIGINTMAXBIT
+#define RND (ulrand64_l() % (MAXTESTLEN + 1))
+#define RNDDIGIT (ulrand64_l() % (BIGINTMAXDIGIT + 1))
+
+
+static void verif_l(BIGINT a_l, BIGINT b_l, int line);
+static void testshl_l(unsigned int nbretest);
+static void testshr_l(unsigned int nbretest);
+static void testsh_l(unsigned int nbretest);
+static void testor_l(unsigned int nbretest);
+static void testand_l(unsigned int nbretest);
+static void testxor_l(unsigned int nbretest);
+static void testsetbit_l(unsigned int nbretest);
+
+
+static void testshl_l(unsigned int nbretest)
+{
+  BIGINT a_l, b_l;
+  BIGINT nul_l = { 0 }, deux_l = { 1, 2 };
+  USHORT k;
+  int i, j;
+
+  printf("Fonction testshl_l()...\n");
+
+  setzero_l(a_l);
+  shleft_l(a_l);
+  verif_l(a_l, nul_l, __LINE__);
+
+  setmax_l(a_l);
+  setmax_l(b_l);
+  if (shleft_l(a_l) != BIGINT_OFL)
+    {
+      printf("Erreur OFL non détecté, ligne %d\n", __LINE__);
+      abort();
+    }
+  umul_l(b_l, 2, b_l);
+  verif_l(a_l, b_l, __LINE__);
+
+  u2bigint_l(a_l, BMIN1);
+  copy_l(b_l, a_l);
+  shleft_l(b_l);
+  if (numbits_l(b_l) != BITPERDGT + 1)
+    {
+      printf("Erreur nbre de bits faux, ligne %d\n", __LINE__);
+      abort();
+    }
+  mul_l(a_l, deux_l, a_l);
+  verif_l(a_l, b_l, __LINE__);
+
+  for (i = 1; i <= nbretest; i++)
+    {
+      rand_l(a_l, RND);
+      copy_l(b_l, a_l);
+      if ((BIGINTMAXBIT - (digits_l(b_l) << LDBITPERDGT)) > 1)
+	k = usrand64_l() % (BIGINTMAXBIT - (digits_l(b_l) << LDBITPERDGT));
+      else
+	k = usrand64_l() % 1;
+      for (j = 1; j <= k; j++)
+	{
+	  shleft_l(a_l);
+	  mul_l(b_l, deux_l, b_l);
+	}
+      verif_l(a_l, b_l, __LINE__);
+    }
+}
+
+static void testshr_l(unsigned int nbretest)
+{
+  BIGINT a_l, b_l, s1_l;
+  BIGINT nul_l = { 0 };
+  USHORT k;
+  int i, j;
+
+  printf("Fonction testshr_l()...\n");
+
+  setzero_l(a_l);
+  if (shright_l(a_l) != BIGINT_UFL)
+    {
+      printf("Erreur UFL non détecté, ligne %d\n", __LINE__);
+      abort();
+    }
+  
+  setone_l(a_l);
+  shright_l(a_l);
+  verif_l(a_l, nul_l, __LINE__);
+
+  setdigits_l(a_l, 2);
+  a_l[1] = 0;
+  a_l[2] = 1;
+  copy_l(b_l, a_l);
+  shright_l(b_l);
+  if (numbits_l(b_l) != BITPERDGT && digits_l(b_l) != 1)
+    {
+      printf("Erreur nbre de bits faux, ligne %d\n", __LINE__);
+      abort();
+    }
+  udiv_l(a_l, 2, a_l, s1_l);
+  verif_l(a_l, b_l, __LINE__);
+
+  for (i = 1; i <= nbretest; i++)
+    {
+      rand_l(a_l, RND);
+      copy_l(b_l, a_l);
+      if ((BIGINTMAXBIT - (digits_l(b_l) << LDBITPERDGT)) > 1)
+	k = usrand64_l() % (BIGINTMAXBIT - (digits_l(b_l) << LDBITPERDGT));
+      else
+	k = usrand64_l() % 1;
+      for (j = 1; j <= k; j++)
+	{
+	  shright_l(a_l);
+	  udiv_l(b_l, 2, b_l, s1_l);
+	}
+      verif_l(a_l, b_l, __LINE__);
+    }
+}
+
+static void testsh_l(unsigned int nbretest)
+{
+  BIGINT a_l, b_l, s1_l;
+  BIGINT nul_l = { 0 }, deux_l = { 1, 2 };
+  USHORT k;
+  int i, j, sk;
+
+  printf("Fonction testsh_l()...\n");
+
+  setzero_l(a_l);
+  shift_l(a_l, 20);
+  verif_l(a_l, nul_l, __LINE__);
+  
+  rand_l(a_l, RND);
+  copy_l(b_l, a_l);
+  shift_l(a_l, 0);
+  verif_l(a_l, b_l, __LINE__);
+
+  setmax_l(a_l);
+  setmax_l(b_l);
+  if (shift_l(a_l, 1) != BIGINT_OFL)
+    {
+      printf("Erreur OFL non détecté, ligne %d\n", __LINE__);
+      abort();
+    }
+  b_l[1] = (BMIN1 - 1);
+  verif_l(a_l, b_l, __LINE__);
+
+  if (shift_l(a_l, BIGINTMAXBIT - 1) != BIGINT_OFL)
+    {
+      printf("Erreur OFL non détecté, ligne %d\n", __LINE__);
+      abort();
+    }
+  verif_l(a_l, nul_l, __LINE__);
+
+  u2bigint_l(a_l, BMIN1);
+  copy_l(b_l, a_l);
+  shift_l(b_l, 1);
+  if (numbits_l(b_l) != BITPERDGT + 1)
+    {
+      printf("Erreur nbre de bits faux, ligne %d\n", __LINE__);
+      abort();
+    }
+  mul_l(a_l, deux_l, a_l);
+  verif_l(a_l, b_l, __LINE__);
+
+  for (i = 1; i <= nbretest; i++)
+    {
+      rand_l(a_l, RND);
+      copy_l(b_l, a_l);
+      if ((BIGINTMAXBIT - (digits_l(b_l) << LDBITPERDGT)) > 1)
+	k = usrand64_l() % (BIGINTMAXBIT - (digits_l(b_l) << LDBITPERDGT));
+      else
+	k = usrand64_l() % 1;
+      shift_l(a_l, k);
+      for (j = 1; j <= k; j++)
+	mul_l(b_l, deux_l, b_l);
+      verif_l(a_l, b_l, __LINE__);
+    }
+
+  setone_l(a_l);
+  shift_l(a_l, -1);
+  verif_l(a_l, nul_l, __LINE__);
+
+  setmax_l(a_l);
+  setmax_l(b_l);
+  shift_l(a_l, -1);
+  b_l[BIGINTMAXDIGIT] = b_l[BIGINTMAXDIGIT] & (BMIN1 - BDIV2);
+  verif_l(a_l, b_l, __LINE__);
+  
+  shift_l(a_l, -(BIGINTMAXBIT -1));
+  b_l[BIGINTMAXDIGIT] = b_l[BIGINTMAXDIGIT] & (BMIN1 - BDIV2);
+  verif_l(a_l, nul_l, __LINE__);
+
+  setdigits_l(a_l, 2);
+  a_l[1] = 0;
+  a_l[2] = 1;
+  copy_l(b_l, a_l);
+  shift_l(b_l, -1);
+  if (numbits_l(b_l) != BITPERDGT && digits_l(b_l) != 1)
+    {
+      printf("Erreur nbre de bits faux, ligne %d\n", __LINE__);
+      abort();
+    }
+  udiv_l(a_l, 2, a_l, s1_l);
+  verif_l(a_l, b_l, __LINE__);
+
+  for (i = 1; i <= nbretest; i++)
+    {
+      rand_l(a_l, RND);
+      copy_l(b_l, a_l);
+      if ((BIGINTMAXBIT - (digits_l(b_l) << LDBITPERDGT)) > 1)
+	k = usrand64_l() % (BIGINTMAXBIT - (digits_l(b_l) << LDBITPERDGT));
+      else
+	k = usrand64_l() % 1;
+      sk = (int)(0 - k);
+      shift_l(a_l, sk);
+      for (j = 1; j <= k; j++)
+	div_l(b_l, deux_l, b_l, s1_l);
+      verif_l(a_l, b_l, __LINE__);
+    }
+}
+
+static void testor_l(unsigned int nbretest)
+{
+  BIGINT a_l, b_l, s1_l;
+  BIGINT nul_l = { 0 }, un_l = { 1, 1 }; 
+  int i;
+
+  printf("Fonction testor_l()...\n");
+
+  or_l(nul_l, nul_l, s1_l);
+  verif_l(s1_l, nul_l, __LINE__);
+
+  or_l(nul_l, un_l, s1_l);
+  verif_l(s1_l, un_l, __LINE__);
+
+  rand_l(a_l, RND);
+  or_l(nul_l, a_l, s1_l);
+  verif_l(s1_l, a_l, __LINE__);
+
+  or_l(a_l, nul_l, s1_l);
+  verif_l(s1_l, a_l, __LINE__);
+
+  setone_l(a_l);
+  rand_l(b_l, RND);
+  or_l(a_l, b_l, s1_l);
+  if (gtzero_l(b_l) == 1)
+    {
+      b_l[1] = b_l[1] | 1;
+      verif_l(s1_l, b_l, __LINE__);
+    }
+  else
+    verif_l(s1_l, un_l, __LINE__);
+  
+  setone_l(a_l);
+  rand_l(b_l, RND);
+  or_l(b_l, a_l, s1_l);
+  if (gtzero_l(b_l) == 1)
+    {
+      b_l[1] = b_l[1] | 1;
+      verif_l(s1_l, b_l, __LINE__);
+    }
+  else
+    verif_l(s1_l, un_l, __LINE__);
+
+  setmax_l(a_l);
+  setmax_l(b_l);
+  or_l(a_l, a_l, a_l);
+  verif_l(a_l, b_l, __LINE__);
+
+  for (i = 1; i <= nbretest; i++)
+    {
+      setmax_l(a_l);
+      rand_l(b_l, RND);
+      or_l(a_l, b_l, s1_l);
+      verif_l(s1_l, a_l, __LINE__);
+      
+      rand_l(a_l, RND);
+      copy_l(b_l, a_l);
+      or_l(a_l, a_l, a_l);
+      verif_l(a_l, b_l, __LINE__);
+      
+      rand_l(a_l, RND);
+      copy_l(b_l, a_l);
+      setzero_l(s1_l);
+      or_l(a_l, s1_l, a_l);
+      verif_l(a_l, b_l, __LINE__);
+    }
+}
+
+static void testand_l(unsigned int nbretest)
+{
+  BIGINT a_l, b_l, s1_l;
+  BIGINT nul_l = { 0 }, un_l = { 1, 1 }; 
+  int i;
+
+  printf("Fonction testand_l()...\n");
+
+  and_l(nul_l, nul_l, s1_l);
+  verif_l(s1_l, nul_l, __LINE__);
+
+  and_l(nul_l, un_l, s1_l);
+  verif_l(s1_l, nul_l, __LINE__);
+
+  rand_l(a_l, RND);
+  and_l(nul_l, a_l, s1_l);
+  verif_l(s1_l, nul_l, __LINE__);
+
+  and_l(a_l, nul_l, s1_l);
+  verif_l(s1_l, nul_l, __LINE__);
+
+  setone_l(a_l);
+  rand_l(b_l, RND);
+  and_l(a_l, b_l, s1_l);
+  if (gtzero_l(b_l) == 1)
+    {
+      b_l[1] = b_l[1] & 1;
+      setdigits_l(b_l, 1);
+    }
+  verif_l(s1_l, b_l, __LINE__);
+  
+  setone_l(a_l);
+  rand_l(b_l, RND);
+  and_l(b_l, a_l, s1_l);
+  if (gtzero_l(b_l) == 1)
+    {
+      b_l[1] = b_l[1] & 1;
+      setdigits_l(b_l, 1);;
+    }
+  verif_l(s1_l, b_l, __LINE__);
+
+  setmax_l(a_l);
+  setmax_l(b_l);
+  and_l(a_l, a_l, a_l);
+  verif_l(a_l, b_l, __LINE__);
+
+  for (i = 1; i <= nbretest; i++)
+    {
+      setmax_l(a_l);
+      rand_l(b_l, RND);
+      and_l(a_l, b_l, a_l);
+      verif_l(b_l, a_l, __LINE__);
+      
+      rand_l(a_l, RND);
+      copy_l(b_l, a_l);
+      and_l(a_l, a_l, a_l);
+      verif_l(a_l, b_l, __LINE__);
+      
+      rand_l(a_l, RND);
+      setzero_l(b_l);
+      and_l(a_l, b_l, a_l);
+      verif_l(a_l, nul_l, __LINE__);
+    }
+}
+
+static void testxor_l(unsigned int nbretest)
+{
+  BIGINT a_l, b_l, s1_l;
+  BIGINT nul_l = { 0 }, un_l = { 1, 1 }; 
+  int i;
+
+  printf("Fonction testxor_l()...\n");
+
+  xor_l(nul_l, nul_l, s1_l);
+  verif_l(s1_l, nul_l, __LINE__);
+
+  xor_l(nul_l, un_l, s1_l);
+  verif_l(s1_l, un_l, __LINE__);
+
+  rand_l(a_l, RND);
+  xor_l(nul_l, a_l, s1_l);
+  verif_l(s1_l, a_l, __LINE__);
+
+  xor_l(a_l, nul_l, s1_l);
+  verif_l(s1_l, a_l, __LINE__);
+
+  setone_l(a_l);
+  rand_l(b_l, RND);
+  xor_l(a_l, b_l, s1_l);
+  if (gtzero_l(b_l) == 1)
+    {
+      b_l[1] = b_l[1] ^ 1;
+      verif_l(s1_l, b_l, __LINE__);
+    }
+  else
+    verif_l(s1_l, un_l, __LINE__);
+  
+  setone_l(a_l);
+  rand_l(b_l, RND);
+  xor_l(b_l, a_l, s1_l);
+  if (gtzero_l(b_l) == 1)
+    {
+      b_l[1] = b_l[1] ^ 1;
+      verif_l(s1_l, b_l, __LINE__);
+    }
+  else
+    verif_l(s1_l, un_l, __LINE__);
+
+  setmax_l(a_l);
+  xor_l(a_l, a_l, a_l);
+  verif_l(a_l, nul_l, __LINE__);
+
+  for (i = 1; i <= nbretest; i++)
+    {
+      rand_l(a_l, RND);
+      copy_l(b_l, a_l);
+      xor_l(a_l, a_l, a_l);
+      verif_l(a_l, nul_l, __LINE__);
+      xor_l(b_l, a_l, a_l);
+      verif_l(a_l, b_l, __LINE__);
+    }
+}
+
+static void testsetbit_l(unsigned int nbretest)
+{
+  BIGINT a_l, b_l;
+  BIGINT un_l = { 1, 1 }, deux_l = { 1, 2 }; 
+  USHORT k, l;
+  int i;
+
+  printf("Fonction testbit_l()...\n");
+
+  setzero_l(a_l);
+  k = BIGINTMAXBIT - 1;
+  if (setbit_l(a_l, k) != 0)
+    {
+      printf("Erreur ligne %d\n", __LINE__);
+      exit(-1);
+    }
+  if (setbit_l(a_l, k) == 0)
+    {
+      printf("Erreur ligne %d\n", __LINE__);
+      exit(-1);
+    }
+  if (testbit_l(a_l, k) == 0)
+    {
+      printf("Erreur ligne %d\n", __LINE__);
+      exit(-1);
+    }
+  verif_l(a_l, a_l, __LINE__);
+  if (clearbit_l(a_l, k) == 0)
+    {
+      printf("Erreur ligne %d\n", __LINE__);
+      exit(-1);
+    }
+  if (gtzero_l(a_l) == 1)
+    {
+      printf("Erreur ligne %d\n", __LINE__);
+      exit(-1);
+    }
+  verif_l(a_l, a_l, __LINE__);
+  
+  setzero_l(a_l);
+  k = 0;
+  setbit_l(a_l, k);
+  if (testbit_l(a_l, k) == 0)
+    {
+      printf("Erreur ligne %d\n", __LINE__);
+      exit(-1);
+    }
+  verif_l(a_l, un_l, __LINE__);
+  if (clearbit_l(a_l, k) == 0)
+    {
+      printf("Erreur ligne %d\n", __LINE__);
+      exit(-1);
+    }
+  if (clearbit_l(a_l, k) == 1)
+    {
+      printf("Erreur ligne %d\n", __LINE__);
+      exit(-1);
+    }
+  if (gtzero_l(a_l) == 1)
+    {
+      printf("Erreur ligne %d\n", __LINE__);
+      exit(-1);
+    }
+  verif_l(a_l, a_l, __LINE__);
+  
+  setzero_l(a_l);
+  k = 1;
+  setbit_l(a_l, k);
+  if (testbit_l(a_l, k) == 0)
+    {
+      printf("Erreur ligne %d\n", __LINE__);
+      exit(-1);
+    }
+  verif_l(a_l, deux_l, __LINE__);
+  if (clearbit_l(a_l, k) == 0)
+    {
+      printf("Erreur ligne %d\n", __LINE__);
+      exit(-1);
+    }
+  if (clearbit_l(a_l, k) == 1)
+    {
+      printf("Erreur ligne %d\n", __LINE__);
+      exit(-1);
+    }
+  if (gtzero_l(a_l) == 1)
+    {
+      printf("Erreur ligne %d\n", __LINE__);
+      exit(-1);
+    }
+  verif_l(a_l, a_l, __LINE__);
+
+  for (i = 1; i <= nbretest; i++)
+    {
+      setzero_l(a_l);
+      setone_l(b_l);
+      k = usrand64_l() % BIGINTMAXBIT;
+      setbit_l(a_l, k);
+      if (setbit_l(a_l, k) == 0)
+	{
+	  printf("Erreur ligne %d\n", __LINE__);
+	  exit(-1);
+	}
+      if (k > 0)
+	shift_l(b_l, k);
+      if (testbit_l(a_l, k) == 0)
+	{
+	  printf("Erreur ligne %d\n", __LINE__);
+	  exit(-1);
+	}
+      verif_l(a_l, b_l, __LINE__);
+      if (clearbit_l(a_l, k) == 0)
+	{
+	  printf("Erreur ligne %d\n", __LINE__);
+	  exit(-1);
+	}
+      if (clearbit_l(a_l, k) == 1)
+	{
+	  printf("Erreur ligne %d\n", __LINE__);
+	  exit(-1);
+	}
+      if (gtzero_l(a_l) == 1)
+	{
+	  printf("Erreur ligne %d\n", __LINE__);
+	  exit(-1);
+	}
+
+      do
+	{
+	  do
+	    rand_l(a_l, RND);
+	  while (eqz_l(a_l));
+	  copy_l(b_l, a_l);
+	  l = numbits_l(a_l);
+	  k = usrand64_l() % l;
+	}
+      while (testbit_l(a_l, k) == 1);
+      if (setbit_l(a_l, k) == 1)
+	{
+	  printf("Erreur ligne %d\n", __LINE__);
+	  exit(-1);
+	}
+      if (testbit_l(a_l, k) == 0)
+	{
+	  printf("Erreur ligne %d\n", __LINE__);
+	  exit(-1);
+	}
+      verif_l(a_l, a_l, __LINE__);
+      if (clearbit_l(a_l, k) == 0)
+	{
+	  printf("Erreur ligne %d\n", __LINE__);
+	  exit(-1);
+	}
+      if (clearbit_l(a_l, k) == 1)
+	{
+	  printf("Erreur ligne %d\n", __LINE__);
+	  exit(-1);
+	}
+      if (equ_l(a_l, b_l) == 0)
+	{
+	  printf("Erreur ligne %d\n", __LINE__);
+	  exit(-1);
+	}
+      verif_l(a_l, a_l, __LINE__);
+    }
+}
+      
+
+
+
+static void verif_l(BIGINT a_l, BIGINT b_l, int line)
+{
+  if (check_l(a_l))
+    {
+      printf("Erreur dans check_l() dans la ligne %d\n", line);
+      printf("check_l() = %d\n", check_l(a_l));
+      printf("a_l = %s\n", bigint2str_l(a_l, 10, 0));
+      abort();
+    }
+  if (equ_l(a_l, b_l) == 0)
+    {
+      printf("Erreur dans la ligne %d\n", line);
+      printf("a_l = %s\n", bigint2str_l(a_l, 10, 0));
+      printf("b_l = %s\n", bigint2str_l(b_l, 10, 0));
+      abort();
+    }
+}
+
+
+
+int main()
+{
+  printf("Module de test %s pour la librairie de fonctions binaires en C\n\n", __FILE__);
+  clock_t t, debut, fin;
+  t = 0;
+  debut = clock();
+  ulseed64_l(time(0));
+
+#ifndef SECURE
+  testshl_l(1000);
+  testshr_l(1000);
+  testsh_l(1000);
+  testor_l(1000);
+  testand_l(1000);
+  testxor_l(1000);
+  testsetbit_l(1000);
+#else
+  testshl_l(100);
+  testshr_l(100);
+  testsh_l(100);
+  testor_l(100);
+  testand_l(100);
+  testxor_l(100);
+  testsetbit_l(100);
+#endif
+
+  fin = clock();
+  t = t + (fin - debut);
+
+  printf("Temps pour %s    = %ld\n", __FILE__, t);
+  printf("\nTous les tests du fichier %s effectués.\n", __FILE__);
+
+  return 0;
+}
+

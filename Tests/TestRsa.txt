@@ -1,0 +1,16 @@
+Le messages original est: J'emmerde la NSA !
+La cle est: 
+0x682349a1242364ca5bb35458a900d55605e6555359a935fbae624ab4818b5d64ac613ba2137cc776ce3b49e8061c210af6755960de83e4179930d0995397dba3c92eb92787615603d47d8e420ab0c1d8a82eef870d65750fa5f9111d9fda572941dc5496c8a4d53d29d43c7a74ebbf1aff59ee992b9c8223093a14f3e8fd4845
+1023bits
+
+Le mod est: 
+0xdefdedbfad070c63399ada7d9821656cf597b0e1b25fb3c4f85c2d87ba5257f266a3023f02c576ffba82e45521749a2717c367d90ee654a93b9fc140d05667dbd4d6feb459977710e48d886d4f0353f36559df11e7c35497eaa7b63607d07dbc547de9e4ad13ee8324d9359d4d2d6d4c07dbf629d1d2c18116ce97ada3bcafb3
+1024bits
+
+La cle publique est: 
+0xa5649593564e593d
+64bits
+
+Le message chiffre est: 8ŞŸL«\Œ¯ì‹I°h²ç¡±#ÛLÀOG¡²,æÉÏÉ.Ïtœë­ïŸ^÷"zû¹V*û­L©¢§ıÀß¶&†	»_~ÛššC²ö=şrD†ÙK¢ñ}Ã›è¯×Í±B-ÓM~aZ,å	!‹_{PÔAÜ$¥*Jk¹y˜êÎª
+La long vaut: 19
+Le message dechiffre est: J'emmerde la NSA !

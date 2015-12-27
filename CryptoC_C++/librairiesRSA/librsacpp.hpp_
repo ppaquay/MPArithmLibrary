@@ -1,0 +1,165 @@
+/***********************************************************************
+ *                                                                     *
+ *                Header pour les fonctions du RSA en C++              *
+ *                                                                     *
+ *                                                                     *
+ *                             Pierre Paquay                           *
+ *                                                                     *
+ ***********************************************************************/
+
+
+#ifndef RSA_HPP
+#define RSA_HPP
+
+#include "libmparithm++.hpp"
+
+/***************************************/
+/* Déclaration des classes auxiliaires */
+/***************************************/
+
+// Classe RSAKey
+
+class RSAKey
+{
+public:
+  largeint p, q, n, e, d;
+  USHORT bitlen;
+};
+
+// Classe RSAKeyPub
+
+class RSAKeyPub
+{
+public:
+  largeint n, e;
+  USHORT bitlen;
+};
+
+/*********************************************/
+/* Déclaration des classes RSAPriv et RSAPub */
+/*********************************************/
+
+// Classe RSAPriv
+
+class RSAPriv
+{
+public:
+
+  /* Constructeurs et destructeur */
+  /********************************/
+
+  // Constructeurs
+
+  inline RSAPriv(void) {};
+  RSAPriv(const int);
+  RSAPriv(const int, const largeint&);
+  
+  // Destructeur
+
+  ~RSAPriv();
+
+  /* Fonctions membres */
+  /*********************/
+
+  // Fonction de décryptage
+
+  UCHAR* decrypt(const largeint&, int*);
+
+  // Fonction de signature
+
+  largeint sign(const UCHAR* const, const int);
+
+  // Fonction d'export de la clé publique
+
+  RSAKeyPub exportkeypub(void);
+
+  /* Fonctions amies de la classe RSAPriv */
+  /******************************************/
+
+  // Opérateurs de comparaison
+
+  friend int operator==(const RSAPriv&, const RSAPriv&);
+  friend int operator!=(const RSAPriv&, const RSAPriv&);
+
+  // Opérateurs de flux
+
+  friend ofstream& operator<<(ofstream&, const RSAPriv&);
+  friend ifstream& operator>>(ifstream&, RSAPriv&);
+
+  /* Opérateur d'affectation */
+  /***************************/
+
+  RSAPriv& operator=(const RSAPriv&);
+
+private:
+  RSAKey keypriv;
+
+  /* Fonctions auxiliaires */
+  /*************************/
+
+  // Fonction de décryptage rapide
+
+  largeint fdecrypt(const largeint&);
+
+  // Gestion des clés
+
+  int testkey(void);
+  int makekey(const int);
+};
+
+// Classe RSAPub
+
+class RSAPub
+{
+public:
+
+  /* Constructeurs et destructeur */
+  /********************************/
+
+  // Constructeurs
+
+  inline RSAPub(void) {};
+  RSAPub(const RSAPriv&);
+  
+  // Destructeur
+
+  ~RSAPub();
+
+  /* Fonctions membres */
+  /*********************/
+  
+  // Fonction de cryptage
+
+  largeint crypt(const UCHAR* const, const int);
+
+  // Fonction d'authentification de la signature
+
+  int authen(const UCHAR* const, const largeint&, const int);
+
+  /* Fonctions amies de la classe RSAPub */
+  /***************************************/
+
+  // Opérateurs de comparaison
+
+  friend int operator==(const RSAPub&, const RSAPub&);
+  friend int operator!=(const RSAPub&, const RSAPub&);
+
+  // Opérateurs de flux
+
+  friend ofstream& operator<<(ofstream&, const RSAPub&);
+  friend ifstream& operator>>(ifstream&, RSAPub&);
+
+private:
+  RSAKeyPub keypub;
+};
+
+/****************************************************/
+/* Fonctions externes aux classes RSAPriv et RSAPub */
+/****************************************************/
+
+UCHAR* pkcs1(const UCHAR*, const int, const UCHAR, const UCHAR*, const int);
+UCHAR* pkcs1_inv(const UCHAR*, int*);
+
+#endif
+
+/* Fin de librsacpp.hpp */
